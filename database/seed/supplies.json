@@ -1,0 +1,1652 @@
+[
+  {
+    "school": "MAES",
+    "grade": "K",
+    "year": "2025-2026",
+    "itemKey": "backpack",
+    "itemName": "Backpack",
+    "quantityRequired": 1,
+    "details": "",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "K",
+    "year": "2025-2026",
+    "itemKey": "scissors",
+    "itemName": "Scissors",
+    "quantityRequired": 1,
+    "details": "Fiskars blunt tip",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "K",
+    "year": "2025-2026",
+    "itemKey": "glue_stick",
+    "itemName": "Glue Stick",
+    "quantityRequired": 6,
+    "details": "",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "K",
+    "year": "2025-2026",
+    "itemKey": "crayons",
+    "itemName": "Crayons",
+    "quantityRequired": 2,
+    "details": "24 count, Crayola only",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "K",
+    "year": "2025-2026",
+    "itemKey": "notebook",
+    "itemName": "Notebook",
+    "quantityRequired": 2,
+    "details": "Wide ruled, 70 sheets",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "K",
+    "year": "2025-2026",
+    "itemKey": "folder_red",
+    "itemName": "Folder",
+    "quantityRequired": 1,
+    "details": "Red plastic 3-prong (NOT binder)",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "K",
+    "year": "2025-2026",
+    "itemKey": "folder_blue",
+    "itemName": "Folder",
+    "quantityRequired": 1,
+    "details": "Blue plastic 3-prong (NOT binder)",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "K",
+    "year": "2025-2026",
+    "itemKey": "pencils",
+    "itemName": "Pencils",
+    "quantityRequired": 12,
+    "details": "#2 yellow Ticonderoga, sharpened",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "K",
+    "year": "2025-2026",
+    "itemKey": "tissues",
+    "itemName": "Kleenex",
+    "quantityRequired": 2,
+    "details": "Boxes",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "K",
+    "year": "2025-2026",
+    "itemKey": "disinfecting_wipes",
+    "itemName": "Clorox Wipes",
+    "quantityRequired": 1,
+    "details": "Container",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "K",
+    "year": "2025-2026",
+    "itemKey": "water_bottle",
+    "itemName": "Water Bottle",
+    "quantityRequired": 1,
+    "details": "",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "K",
+    "year": "2025-2026",
+    "itemKey": "watercolor_paints",
+    "itemName": "Watercolor Paints",
+    "quantityRequired": 1,
+    "details": "Washable 8 count, Crayola only",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "K",
+    "year": "2025-2026",
+    "itemKey": "blanket",
+    "itemName": "Blanket",
+    "quantityRequired": 1,
+    "details": "Small, for rest time",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "K",
+    "year": "2025-2026",
+    "itemKey": "tennis_shoes",
+    "itemName": "Tennis Shoes",
+    "quantityRequired": 1,
+    "details": "Velcro preferred",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "K",
+    "year": "2025-2026",
+    "itemKey": "dry_erase_marker",
+    "itemName": "Dry Erase Marker",
+    "quantityRequired": 6,
+    "details": "Black",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "K",
+    "year": "2025-2026",
+    "itemKey": "headphones",
+    "itemName": "Headphones",
+    "quantityRequired": 1,
+    "details": "Not earbuds or Bluetooth",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "K",
+    "year": "2025-2026",
+    "itemKey": "markers",
+    "itemName": "Markers",
+    "quantityRequired": 2,
+    "details": "10 Classic Colors, Crayola regular size",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "1",
+    "year": "2025-2026",
+    "itemKey": "crayons",
+    "itemName": "Crayons",
+    "quantityRequired": 4,
+    "details": "24 count, Crayola",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "1",
+    "year": "2025-2026",
+    "itemKey": "binder",
+    "itemName": "3 Ring Binder",
+    "quantityRequired": 1,
+    "details": "1 inch, white",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "1",
+    "year": "2025-2026",
+    "itemKey": "tissues",
+    "itemName": "Kleenex",
+    "quantityRequired": 2,
+    "details": "Boxes",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "1",
+    "year": "2025-2026",
+    "itemKey": "headphones",
+    "itemName": "Headphones",
+    "quantityRequired": 1,
+    "details": "Not earbuds",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "1",
+    "year": "2025-2026",
+    "itemKey": "folder_blue",
+    "itemName": "Folder",
+    "quantityRequired": 1,
+    "details": "Blue pocket folder",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "1",
+    "year": "2025-2026",
+    "itemKey": "folder_red",
+    "itemName": "Folder",
+    "quantityRequired": 1,
+    "details": "Red pocket folder",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "1",
+    "year": "2025-2026",
+    "itemKey": "highlighter",
+    "itemName": "Highlighter",
+    "quantityRequired": 1,
+    "details": "Yellow",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "1",
+    "year": "2025-2026",
+    "itemKey": "pencil_box",
+    "itemName": "Plastic Pencil Box",
+    "quantityRequired": 1,
+    "details": "Regular size",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "1",
+    "year": "2025-2026",
+    "itemKey": "glue_stick",
+    "itemName": "Glue Stick",
+    "quantityRequired": 12,
+    "details": "",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "1",
+    "year": "2025-2026",
+    "itemKey": "glue_bottle",
+    "itemName": "Glue Bottle",
+    "quantityRequired": 1,
+    "details": "Elmer's white glue",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "1",
+    "year": "2025-2026",
+    "itemKey": "scissors",
+    "itemName": "Scissors",
+    "quantityRequired": 1,
+    "details": "",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "1",
+    "year": "2025-2026",
+    "itemKey": "dry_erase_marker",
+    "itemName": "Dry Erase Marker",
+    "quantityRequired": 4,
+    "details": "Black (Expo)",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "1",
+    "year": "2025-2026",
+    "itemKey": "backpack",
+    "itemName": "Book Bag",
+    "quantityRequired": 1,
+    "details": "No wheels",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "1",
+    "year": "2025-2026",
+    "itemKey": "watercolor_paints",
+    "itemName": "Watercolor Paints",
+    "quantityRequired": 1,
+    "details": "Crayola",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "1",
+    "year": "2025-2026",
+    "itemKey": "notebook",
+    "itemName": "Spiral Notebook",
+    "quantityRequired": 1,
+    "details": "Wide ruled",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "1",
+    "year": "2025-2026",
+    "itemKey": "pencils",
+    "itemName": "Pencils",
+    "quantityRequired": 24,
+    "details": "#2 yellow Ticonderoga, sharpened (No mechanical)",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "1",
+    "year": "2025-2026",
+    "itemKey": "markers",
+    "itemName": "Markers",
+    "quantityRequired": 1,
+    "details": "10 Classic Colors, Crayola regular size",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "1",
+    "year": "2025-2026",
+    "itemKey": "disinfecting_wipes",
+    "itemName": "Clorox Wipes",
+    "quantityRequired": 2,
+    "details": "Container",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "2",
+    "year": "2025-2026",
+    "itemKey": "page_protectors",
+    "itemName": "Clear Page Protectors",
+    "quantityRequired": 100,
+    "details": "",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "2",
+    "year": "2025-2026",
+    "itemKey": "sharpie",
+    "itemName": "Sharpie",
+    "quantityRequired": 2,
+    "details": "Black",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "2",
+    "year": "2025-2026",
+    "itemKey": "scissors",
+    "itemName": "Scissors",
+    "quantityRequired": 1,
+    "details": "",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "2",
+    "year": "2025-2026",
+    "itemKey": "markers",
+    "itemName": "Markers",
+    "quantityRequired": 1,
+    "details": "10 count Crayola",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "2",
+    "year": "2025-2026",
+    "itemKey": "tissues",
+    "itemName": "Kleenex",
+    "quantityRequired": 1,
+    "details": "200 count",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "2",
+    "year": "2025-2026",
+    "itemKey": "dry_erase_marker",
+    "itemName": "Dry Erase Marker",
+    "quantityRequired": 6,
+    "details": "Black (Expo)",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "2",
+    "year": "2025-2026",
+    "itemKey": "crayons",
+    "itemName": "Crayons",
+    "quantityRequired": 1,
+    "details": "Crayola (Box)",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "2",
+    "year": "2025-2026",
+    "itemKey": "glue_stick",
+    "itemName": "Glue Stick",
+    "quantityRequired": 8,
+    "details": "",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "2",
+    "year": "2025-2026",
+    "itemKey": "binder",
+    "itemName": "3 Ring Binder",
+    "quantityRequired": 1,
+    "details": "1 inch",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "2",
+    "year": "2025-2026",
+    "itemKey": "disinfecting_wipes",
+    "itemName": "Clorox Wipes",
+    "quantityRequired": 1,
+    "details": "Container",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "2",
+    "year": "2025-2026",
+    "itemKey": "spiral_notebook",
+    "itemName": "Spiral Notebook",
+    "quantityRequired": 1,
+    "details": "Wide ruled",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "2",
+    "year": "2025-2026",
+    "itemKey": "colored_pencils",
+    "itemName": "Colored Pencils",
+    "quantityRequired": 1,
+    "details": "24 or 36 count Crayola",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "2",
+    "year": "2025-2026",
+    "itemKey": "headphones",
+    "itemName": "Headphones",
+    "quantityRequired": 1,
+    "details": "Not earbuds",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "2",
+    "year": "2025-2026",
+    "itemKey": "watercolor_paints",
+    "itemName": "Watercolor Paints",
+    "quantityRequired": 1,
+    "details": "Crayola",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "2",
+    "year": "2025-2026",
+    "itemKey": "highlighter",
+    "itemName": "Highlighter",
+    "quantityRequired": 1,
+    "details": "",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "2",
+    "year": "2025-2026",
+    "itemKey": "folder_red",
+    "itemName": "Folder",
+    "quantityRequired": 1,
+    "details": "Red plastic prong folder",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "2",
+    "year": "2025-2026",
+    "itemKey": "folder_blue",
+    "itemName": "Folder",
+    "quantityRequired": 1,
+    "details": "Blue plastic prong folder",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "2",
+    "year": "2025-2026",
+    "itemKey": "pencils",
+    "itemName": "Pencils",
+    "quantityRequired": 24,
+    "details": "#2 yellow Ticonderoga, sharpened (No mechanical)",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "3",
+    "year": "2025-2026",
+    "itemKey": "composition_notebook",
+    "itemName": "Composition Notebook",
+    "quantityRequired": 1,
+    "details": "Wide ruled",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "3",
+    "year": "2025-2026",
+    "itemKey": "spiral_notebook",
+    "itemName": "Spiral Notebook",
+    "quantityRequired": 4,
+    "details": "Wide ruled",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "3",
+    "year": "2025-2026",
+    "itemKey": "sharpie",
+    "itemName": "Sharpie",
+    "quantityRequired": 4,
+    "details": "Black",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "3",
+    "year": "2025-2026",
+    "itemKey": "colored_pencils",
+    "itemName": "Colored Pencils",
+    "quantityRequired": 1,
+    "details": "Box",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "3",
+    "year": "2025-2026",
+    "itemKey": "crayons",
+    "itemName": "Crayons",
+    "quantityRequired": 1,
+    "details": "Box of 24",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "3",
+    "year": "2025-2026",
+    "itemKey": "markers",
+    "itemName": "Markers",
+    "quantityRequired": 1,
+    "details": "10 count Crayola",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "3",
+    "year": "2025-2026",
+    "itemKey": "dry_erase_marker",
+    "itemName": "Dry Erase Marker",
+    "quantityRequired": 12,
+    "details": "Black only",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "3",
+    "year": "2025-2026",
+    "itemKey": "glue_stick",
+    "itemName": "Glue Stick",
+    "quantityRequired": 10,
+    "details": "",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "3",
+    "year": "2025-2026",
+    "itemKey": "headphones",
+    "itemName": "Headphones",
+    "quantityRequired": 1,
+    "details": "Not Bluetooth",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "3",
+    "year": "2025-2026",
+    "itemKey": "scissors",
+    "itemName": "Scissors",
+    "quantityRequired": 1,
+    "details": "",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "3",
+    "year": "2025-2026",
+    "itemKey": "highlighter",
+    "itemName": "Highlighter",
+    "quantityRequired": 2,
+    "details": "Different colors",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "3",
+    "year": "2025-2026",
+    "itemKey": "watercolor_paints",
+    "itemName": "Watercolor Paints",
+    "quantityRequired": 1,
+    "details": "",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "3",
+    "year": "2025-2026",
+    "itemKey": "take_home_folder",
+    "itemName": "Take Home Folder",
+    "quantityRequired": 1,
+    "details": "",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "3",
+    "year": "2025-2026",
+    "itemKey": "whiteboard_eraser",
+    "itemName": "Whiteboard Eraser",
+    "quantityRequired": 1,
+    "details": "",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "3",
+    "year": "2025-2026",
+    "itemKey": "page_protectors",
+    "itemName": "Clear Page Protectors",
+    "quantityRequired": 30,
+    "details": "",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "3",
+    "year": "2025-2026",
+    "itemKey": "school_box",
+    "itemName": "School Box",
+    "quantityRequired": 1,
+    "details": "Approx 8\"x5\"x2\"",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "3",
+    "year": "2025-2026",
+    "itemKey": "folder_red",
+    "itemName": "Folder",
+    "quantityRequired": 1,
+    "details": "Red pocket folder",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "3",
+    "year": "2025-2026",
+    "itemKey": "folder_blue",
+    "itemName": "Folder",
+    "quantityRequired": 1,
+    "details": "Blue pocket folder",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "3",
+    "year": "2025-2026",
+    "itemKey": "folder_yellow",
+    "itemName": "Folder",
+    "quantityRequired": 1,
+    "details": "Yellow pocket folder",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "3",
+    "year": "2025-2026",
+    "itemKey": "folder_green",
+    "itemName": "Folder",
+    "quantityRequired": 1,
+    "details": "Green pocket folder",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "3",
+    "year": "2025-2026",
+    "itemKey": "pencils",
+    "itemName": "Pencils",
+    "quantityRequired": 24,
+    "details": "#2 yellow Ticonderoga",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "3",
+    "year": "2025-2026",
+    "itemKey": "binder",
+    "itemName": "3 Ring Binder",
+    "quantityRequired": 1,
+    "details": "1 inch",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "4",
+    "year": "2025-2026",
+    "itemKey": "crayons",
+    "itemName": "Crayons",
+    "quantityRequired": 1,
+    "details": "24 count or larger",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "4",
+    "year": "2025-2026",
+    "itemKey": "markers",
+    "itemName": "Markers",
+    "quantityRequired": 1,
+    "details": "Box",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "4",
+    "year": "2025-2026",
+    "itemKey": "spiral_notebook",
+    "itemName": "Spiral Notebook",
+    "quantityRequired": 4,
+    "details": "Wide ruled",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "4",
+    "year": "2025-2026",
+    "itemKey": "tissues",
+    "itemName": "Kleenex",
+    "quantityRequired": 1,
+    "details": "Box",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "4",
+    "year": "2025-2026",
+    "itemKey": "colored_pencils",
+    "itemName": "Colored Pencils",
+    "quantityRequired": 1,
+    "details": "",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "4",
+    "year": "2025-2026",
+    "itemKey": "highlighter",
+    "itemName": "Highlighter",
+    "quantityRequired": 2,
+    "details": "Different colors",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "4",
+    "year": "2025-2026",
+    "itemKey": "scissors",
+    "itemName": "Scissors",
+    "quantityRequired": 1,
+    "details": "",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "4",
+    "year": "2025-2026",
+    "itemKey": "glue_stick",
+    "itemName": "Glue Stick",
+    "quantityRequired": 4,
+    "details": "",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "4",
+    "year": "2025-2026",
+    "itemKey": "sharpie",
+    "itemName": "Sharpie",
+    "quantityRequired": 2,
+    "details": "Black",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "4",
+    "year": "2025-2026",
+    "itemKey": "folder_red",
+    "itemName": "Folder",
+    "quantityRequired": 1,
+    "details": "Red",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "4",
+    "year": "2025-2026",
+    "itemKey": "folder_blue",
+    "itemName": "Folder",
+    "quantityRequired": 1,
+    "details": "Blue",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "4",
+    "year": "2025-2026",
+    "itemKey": "folder_green",
+    "itemName": "Folder",
+    "quantityRequired": 1,
+    "details": "Green",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "4",
+    "year": "2025-2026",
+    "itemKey": "folder_purple",
+    "itemName": "Folder",
+    "quantityRequired": 1,
+    "details": "Purple",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "4",
+    "year": "2025-2026",
+    "itemKey": "folder_yellow",
+    "itemName": "Folder",
+    "quantityRequired": 1,
+    "details": "Yellow",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "4",
+    "year": "2025-2026",
+    "itemKey": "disinfecting_wipes",
+    "itemName": "Clorox Wipes",
+    "quantityRequired": 3,
+    "details": "Container",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "4",
+    "year": "2025-2026",
+    "itemKey": "school_box",
+    "itemName": "School Box",
+    "quantityRequired": 1,
+    "details": "Approx 8\"x5\"x2\"",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "4",
+    "year": "2025-2026",
+    "itemKey": "dry_erase_marker",
+    "itemName": "Dry Erase Marker",
+    "quantityRequired": 8,
+    "details": "Black",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "4",
+    "year": "2025-2026",
+    "itemKey": "take_home_folder",
+    "itemName": "Take Home Folder",
+    "quantityRequired": 1,
+    "details": "",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "4",
+    "year": "2025-2026",
+    "itemKey": "headphones",
+    "itemName": "Headphones",
+    "quantityRequired": 1,
+    "details": "Not Bluetooth",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "4",
+    "year": "2025-2026",
+    "itemKey": "pencil_box",
+    "itemName": "Toothbrush Holder",
+    "quantityRequired": 1,
+    "details": "Travel sized",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "4",
+    "year": "2025-2026",
+    "itemKey": "pencils",
+    "itemName": "Pencils",
+    "quantityRequired": 48,
+    "details": "Sharpened",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "5",
+    "year": "2025-2026",
+    "itemKey": "pencils",
+    "itemName": "Pencils",
+    "quantityRequired": 24,
+    "details": "#2",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "5",
+    "year": "2025-2026",
+    "itemKey": "glue_bottle",
+    "itemName": "Glue Bottle",
+    "quantityRequired": 1,
+    "details": "Elmer's",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "5",
+    "year": "2025-2026",
+    "itemKey": "highlighter",
+    "itemName": "Highlighter",
+    "quantityRequired": 1,
+    "details": "",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "5",
+    "year": "2025-2026",
+    "itemKey": "tissues",
+    "itemName": "Kleenex",
+    "quantityRequired": 2,
+    "details": "Boxes",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "5",
+    "year": "2025-2026",
+    "itemKey": "scissors",
+    "itemName": "Scissors",
+    "quantityRequired": 1,
+    "details": "",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "5",
+    "year": "2025-2026",
+    "itemKey": "disinfecting_wipes",
+    "itemName": "Clorox Wipes",
+    "quantityRequired": 1,
+    "details": "Container",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "5",
+    "year": "2025-2026",
+    "itemKey": "glue_stick",
+    "itemName": "Glue Stick",
+    "quantityRequired": 4,
+    "details": "",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "5",
+    "year": "2025-2026",
+    "itemKey": "colored_pencils",
+    "itemName": "Colored Pencils",
+    "quantityRequired": 1,
+    "details": "",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "5",
+    "year": "2025-2026",
+    "itemKey": "pencil_case",
+    "itemName": "Pencil Case or Box",
+    "quantityRequired": 1,
+    "details": "",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "5",
+    "year": "2025-2026",
+    "itemKey": "markers",
+    "itemName": "Markers",
+    "quantityRequired": 1,
+    "details": "",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "5",
+    "year": "2025-2026",
+    "itemKey": "dry_erase_marker",
+    "itemName": "Dry Erase Marker",
+    "quantityRequired": 8,
+    "details": "Black (Expo)",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "5",
+    "year": "2025-2026",
+    "itemKey": "sharpie",
+    "itemName": "Sharpie",
+    "quantityRequired": 2,
+    "details": "Regular",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "5",
+    "year": "2025-2026",
+    "itemKey": "spiral_notebook",
+    "itemName": "Spiral Notebook",
+    "quantityRequired": 1,
+    "details": "One-subject",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "5",
+    "year": "2025-2026",
+    "itemKey": "folder_red",
+    "itemName": "Folder",
+    "quantityRequired": 1,
+    "details": "Red 3-prong",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "5",
+    "year": "2025-2026",
+    "itemKey": "folder_blue",
+    "itemName": "Folder",
+    "quantityRequired": 1,
+    "details": "Blue 3-prong",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "5",
+    "year": "2025-2026",
+    "itemKey": "folder_green",
+    "itemName": "Folder",
+    "quantityRequired": 1,
+    "details": "Green 3-prong",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "5",
+    "year": "2025-2026",
+    "itemKey": "folder_yellow",
+    "itemName": "Folder",
+    "quantityRequired": 1,
+    "details": "Yellow 3-prong",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "5",
+    "year": "2025-2026",
+    "itemKey": "folder_purple",
+    "itemName": "Folder",
+    "quantityRequired": 1,
+    "details": "Purple 3-prong",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "5",
+    "year": "2025-2026",
+    "itemKey": "binder",
+    "itemName": "3 Ring Binder",
+    "quantityRequired": 1,
+    "details": "",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "5",
+    "year": "2025-2026",
+    "itemKey": "headphones",
+    "itemName": "Headphones",
+    "quantityRequired": 1,
+    "details": "Good quality",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "6",
+    "year": "2025-2026",
+    "itemKey": "headphones",
+    "itemName": "Headphones/Earbuds",
+    "quantityRequired": 1,
+    "details": "Good quality (REQUIRED)",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "6",
+    "year": "2025-2026",
+    "itemKey": "pencils",
+    "itemName": "Pencils",
+    "quantityRequired": 36,
+    "details": "#2 with eraser",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "6",
+    "year": "2025-2026",
+    "itemKey": "post_it_notes",
+    "itemName": "Post-it Notes",
+    "quantityRequired": 1,
+    "details": "Standard size pack",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "6",
+    "year": "2025-2026",
+    "itemKey": "pen_blue_black",
+    "itemName": "Pen",
+    "quantityRequired": 2,
+    "details": "Blue or black",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "6",
+    "year": "2025-2026",
+    "itemKey": "red_pen_or_pencil",
+    "itemName": "Red Pen or Pencil",
+    "quantityRequired": 1,
+    "details": "",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "6",
+    "year": "2025-2026",
+    "itemKey": "binder",
+    "itemName": "3 Ring Binder",
+    "quantityRequired": 1,
+    "details": "1 inch with front cover pocket",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "6",
+    "year": "2025-2026",
+    "itemKey": "tissues",
+    "itemName": "Kleenex",
+    "quantityRequired": 3,
+    "details": "200 count boxes",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "6",
+    "year": "2025-2026",
+    "itemKey": "disinfecting_wipes",
+    "itemName": "Clorox Wipes",
+    "quantityRequired": 2,
+    "details": "Containers",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "6",
+    "year": "2025-2026",
+    "itemKey": "page_protectors",
+    "itemName": "Clear Page Protectors",
+    "quantityRequired": 50,
+    "details": "",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "6",
+    "year": "2025-2026",
+    "itemKey": "index_cards",
+    "itemName": "Index Cards",
+    "quantityRequired": 100,
+    "details": "3x5",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "6",
+    "year": "2025-2026",
+    "itemKey": "colored_pencils",
+    "itemName": "Colored Pencils",
+    "quantityRequired": 1,
+    "details": "",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "6",
+    "year": "2025-2026",
+    "itemKey": "highlighter",
+    "itemName": "Highlighter",
+    "quantityRequired": 2,
+    "details": "Any color",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "6",
+    "year": "2025-2026",
+    "itemKey": "dry_erase_marker",
+    "itemName": "Dry Erase Marker",
+    "quantityRequired": 2,
+    "details": "Black (Expo)",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "6",
+    "year": "2025-2026",
+    "itemKey": "scissors",
+    "itemName": "Scissors",
+    "quantityRequired": 1,
+    "details": "",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "6",
+    "year": "2025-2026",
+    "itemKey": "glue_stick",
+    "itemName": "Glue Stick",
+    "quantityRequired": 1,
+    "details": "",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "6",
+    "year": "2025-2026",
+    "itemKey": "folder_blue",
+    "itemName": "Folder",
+    "quantityRequired": 1,
+    "details": "Blue",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "6",
+    "year": "2025-2026",
+    "itemKey": "folder_red",
+    "itemName": "Folder",
+    "quantityRequired": 1,
+    "details": "Red",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "6",
+    "year": "2025-2026",
+    "itemKey": "folder_green",
+    "itemName": "Folder",
+    "quantityRequired": 1,
+    "details": "Green",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "6",
+    "year": "2025-2026",
+    "itemKey": "folder_purple",
+    "itemName": "Folder",
+    "quantityRequired": 1,
+    "details": "Purple",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "6",
+    "year": "2025-2026",
+    "itemKey": "folder_yellow",
+    "itemName": "Folder",
+    "quantityRequired": 1,
+    "details": "Yellow",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "6",
+    "year": "2025-2026",
+    "itemKey": "spiral_notebook_blue",
+    "itemName": "Spiral Notebook",
+    "quantityRequired": 1,
+    "details": "Blue",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "6",
+    "year": "2025-2026",
+    "itemKey": "spiral_notebook_red",
+    "itemName": "Spiral Notebook",
+    "quantityRequired": 1,
+    "details": "Red",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "6",
+    "year": "2025-2026",
+    "itemKey": "spiral_notebook_green",
+    "itemName": "Spiral Notebook",
+    "quantityRequired": 1,
+    "details": "Green",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "6",
+    "year": "2025-2026",
+    "itemKey": "spiral_notebook_purple",
+    "itemName": "Spiral Notebook",
+    "quantityRequired": 1,
+    "details": "Purple",
+    "required": true
+  },
+  {
+    "school": "MAES",
+    "grade": "6",
+    "year": "2025-2026",
+    "itemKey": "spiral_notebook_yellow",
+    "itemName": "Spiral Notebook",
+    "quantityRequired": 1,
+    "details": "Yellow",
+    "required": true
+  },
+  {
+    "school": "MAHS",
+    "grade": "7",
+    "year": "2025-2026",
+    "itemKey": "folder_red",
+    "itemName": "Folder",
+    "quantityRequired": 1,
+    "details": "Red pocket folder",
+    "required": true
+  },
+  {
+    "school": "MAHS",
+    "grade": "7",
+    "year": "2025-2026",
+    "itemKey": "folder_blue",
+    "itemName": "Folder",
+    "quantityRequired": 1,
+    "details": "Blue pocket folder",
+    "required": true
+  },
+  {
+    "school": "MAHS",
+    "grade": "7",
+    "year": "2025-2026",
+    "itemKey": "folder_yellow",
+    "itemName": "Folder",
+    "quantityRequired": 1,
+    "details": "Yellow pocket folder",
+    "required": true
+  },
+  {
+    "school": "MAHS",
+    "grade": "7",
+    "year": "2025-2026",
+    "itemKey": "folder_green",
+    "itemName": "Folder",
+    "quantityRequired": 1,
+    "details": "Green pocket folder",
+    "required": true
+  },
+  {
+    "school": "MAHS",
+    "grade": "7",
+    "year": "2025-2026",
+    "itemKey": "folder_purple",
+    "itemName": "Folder",
+    "quantityRequired": 1,
+    "details": "Purple pocket folder",
+    "required": true
+  },
+  {
+    "school": "MAHS",
+    "grade": "7",
+    "year": "2025-2026",
+    "itemKey": "spiral_notebook_red",
+    "itemName": "Spiral Notebook",
+    "quantityRequired": 1,
+    "details": "Red",
+    "required": true
+  },
+  {
+    "school": "MAHS",
+    "grade": "7",
+    "year": "2025-2026",
+    "itemKey": "spiral_notebook_blue",
+    "itemName": "Spiral Notebook",
+    "quantityRequired": 1,
+    "details": "Blue",
+    "required": true
+  },
+  {
+    "school": "MAHS",
+    "grade": "7",
+    "year": "2025-2026",
+    "itemKey": "spiral_notebook_yellow",
+    "itemName": "Spiral Notebook",
+    "quantityRequired": 1,
+    "details": "Yellow",
+    "required": true
+  },
+  {
+    "school": "MAHS",
+    "grade": "7",
+    "year": "2025-2026",
+    "itemKey": "spiral_notebook_green",
+    "itemName": "Spiral Notebook",
+    "quantityRequired": 1,
+    "details": "Green",
+    "required": true
+  },
+  {
+    "school": "MAHS",
+    "grade": "7",
+    "year": "2025-2026",
+    "itemKey": "spiral_notebook_purple",
+    "itemName": "Spiral Notebook",
+    "quantityRequired": 1,
+    "details": "Purple",
+    "required": true
+  },
+  {
+    "school": "MAHS",
+    "grade": "7",
+    "year": "2025-2026",
+    "itemKey": "spiral_notebook",
+    "itemName": "Spiral Notebook",
+    "quantityRequired": 1,
+    "details": "Subject use",
+    "required": true
+  },
+  {
+    "school": "MAHS",
+    "grade": "7",
+    "year": "2025-2026",
+    "itemKey": "composition_notebook",
+    "itemName": "Composition Notebook",
+    "quantityRequired": 1,
+    "details": "Science preferred",
+    "required": true
+  },
+  {
+    "school": "MAHS",
+    "grade": "7",
+    "year": "2025-2026",
+    "itemKey": "headphones",
+    "itemName": "Headphones",
+    "quantityRequired": 1,
+    "details": "Simple pin/mini jack, no Bluetooth or earbuds",
+    "required": true
+  },
+  {
+    "school": "MAHS",
+    "grade": "7",
+    "year": "2025-2026",
+    "itemKey": "pencils",
+    "itemName": "Pencils",
+    "quantityRequired": 1,
+    "details": "Multiple needed throughout year",
+    "required": true
+  },
+  {
+    "school": "MAHS",
+    "grade": "7",
+    "year": "2025-2026",
+    "itemKey": "pens",
+    "itemName": "Pens",
+    "quantityRequired": 1,
+    "details": "",
+    "required": true
+  },
+  {
+    "school": "MAHS",
+    "grade": "7",
+    "year": "2025-2026",
+    "itemKey": "highlighter",
+    "itemName": "Highlighter",
+    "quantityRequired": 1,
+    "details": "",
+    "required": true
+  },
+  {
+    "school": "MAHS",
+    "grade": "7",
+    "year": "2025-2026",
+    "itemKey": "tissues",
+    "itemName": "Kleenex",
+    "quantityRequired": 2,
+    "details": "One for History, one for Math",
+    "required": true
+  },
+  {
+    "school": "MAHS",
+    "grade": "7",
+    "year": "2025-2026",
+    "itemKey": "loose_leaf_paper",
+    "itemName": "Loose Leaf Paper",
+    "quantityRequired": 1,
+    "details": "Pack",
+    "required": true
+  },
+  {
+    "school": "MAHS",
+    "grade": "7",
+    "year": "2025-2026",
+    "itemKey": "colored_pencils",
+    "itemName": "Colored Pencils",
+    "quantityRequired": 1,
+    "details": "Science use",
+    "required": true
+  },
+  {
+    "school": "MAHS",
+    "grade": "7",
+    "year": "2025-2026",
+    "itemKey": "markers",
+    "itemName": "Markers",
+    "quantityRequired": 1,
+    "details": "Science use",
+    "required": true
+  },
+  {
+    "school": "MAHS",
+    "grade": "7",
+    "year": "2025-2026",
+    "itemKey": "crayons",
+    "itemName": "Crayons",
+    "quantityRequired": 1,
+    "details": "Science use (optional alternative to markers/colored pencils)",
+    "required": true
+  },
+  {
+    "school": "MAHS",
+    "grade": "7",
+    "year": "2025-2026",
+    "itemKey": "scissors",
+    "itemName": "Scissors",
+    "quantityRequired": 1,
+    "details": "",
+    "required": true
+  },
+  {
+    "school": "MAHS",
+    "grade": "7",
+    "year": "2025-2026",
+    "itemKey": "glue_stick",
+    "itemName": "Glue Stick",
+    "quantityRequired": 3,
+    "details": "Several needed for daily notebook use",
+    "required": true
+  },
+  {
+    "school": "MAHS",
+    "grade": "7",
+    "year": "2025-2026",
+    "itemKey": "binder",
+    "itemName": "Binder or Folder",
+    "quantityRequired": 2,
+    "details": "English and Math",
+    "required": true
+  }
+]
