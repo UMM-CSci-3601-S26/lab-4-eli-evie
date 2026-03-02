@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.bson.UuidRepresentation;
-import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 import org.mongojack.JacksonMongoCollection;
 import io.javalin.http.HttpStatus;
@@ -20,8 +19,6 @@ import io.javalin.http.NotFoundResponse;
 import static com.mongodb.client.model.Filters.eq;
 
 import umm3601.Controller;
-import umm3601.family.Family;
-import umm3601.inventory.Inventory;
 
 public class FamilyController implements Controller {
   private static final String API_FAMILY = "/api/family";
@@ -39,12 +36,7 @@ public class FamilyController implements Controller {
         Family.class,
         UuidRepresentation.STANDARD);
   }
-  /**
-   * Set the JSON body of the response to be the single family
-   * specified by the `id` parameter in the request
-   *
-   * @param ctx a Javalin HTTP context
-   */
+
   public void getFamily(Context ctx) {
     String id = ctx.pathParam("id");
     Family family;
@@ -62,31 +54,15 @@ public class FamilyController implements Controller {
     }
   }
 
-  /**
-   * Set the JSON body of the response to be a list of all the families returned from the database
-   * that match any requested filters and ordering
-   *
-   * @param ctx a Javalin HTTP context
-   */
   public void getFamilies(Context ctx) {
-
     ArrayList<Family> matchingFamilies = familyCollection
       .find()
       .into(new ArrayList<>());
 
     ctx.json(matchingFamilies);
-
     ctx.status(HttpStatus.OK);
   }
 
-
-  /**
-   * Add a new family using information from the context
-   * (as long as the information gives "legal" values to User fields)
-   *
-   * @param ctx a Javalin HTTP context that provides the family info
-   *  in the JSON body of the request
-   */
   public void addNewFamily(Context ctx) {
 
     String body = ctx.body();
@@ -96,18 +72,11 @@ public class FamilyController implements Controller {
       // .check(fam -> fam.students,
       //   "Family must have a legal family role; body was " + body)
       .get();
-
     familyCollection.insertOne(newFamily);
-
     ctx.json(Map.of("id", newFamily._id));
     ctx.status(HttpStatus.CREATED);
   }
 
-  /**
-   * Delete the family specified by the `id` parameter in the request.
-   *
-   * @param ctx a Javalin HTTP context
-   */
   public void deleteFamily(Context ctx) {
     String id = ctx.pathParam("id");
     DeleteResult deleteResult = familyCollection.deleteOne(eq("_id", new ObjectId(id)));
