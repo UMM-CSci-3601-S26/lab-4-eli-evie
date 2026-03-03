@@ -7,6 +7,8 @@ import org.mongojack.ObjectId;
 public class Supply {
   @ObjectId @Id
   @SuppressWarnings({"MemberName"})
+  public String _id;
+
   public String school;
   public String grade;
   public String year;

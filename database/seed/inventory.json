@@ -1,234 +1,195 @@
 [
   {
-    "_id": "a83jf920skd1",
     "itemKey": "backpack",
     "itemName": "Backpack",
     "quantityAvailable": 2
   },
   {
-    "_id": "b29dk38slq72",
     "itemKey": "binder",
     "itemName": "Binder",
     "quantityAvailable": 6
   },
   {
-    "_id": "c72kd93lsm44",
     "itemKey": "blanket",
     "itemName": "Blanket",
     "quantityAvailable": 1
   },
   {
-    "_id": "d90sk21lsn88",
     "itemKey": "colored_pencils",
     "itemName": "Colored Pencils",
     "quantityAvailable": 3
   },
   {
-    "_id": "e82ksl10zpq3",
     "itemKey": "composition_notebook",
     "itemName": "Composition Notebook",
     "quantityAvailable": 2
   },
   {
-    "_id": "f18slq72kd55",
     "itemKey": "crayons",
     "itemName": "Crayons",
     "quantityAvailable": 9
   },
   {
-    "_id": "g44kdl29sla1",
     "itemKey": "disinfecting_wipes",
     "itemName": "Disinfecting Wipes",
     "quantityAvailable": 3
   },
   {
-    "_id": "h73ksl92dke4",
     "itemKey": "dry_erase_marker",
     "itemName": "Dry Erase Marker",
     "quantityAvailable": 16
   },
   {
-    "_id": "i02ksl83mdp9",
     "itemKey": "eraser",
     "itemName": "Eraser",
     "quantityAvailable": 2
   },
   {
-    "_id": "j49slq28dkf2",
     "itemKey": "folder_blue",
     "itemName": "Blue Folder",
     "quantityAvailable": 4
   },
   {
-    "_id": "k29dls83pq10",
     "itemKey": "folder_green",
     "itemName": "Green Folder",
     "quantityAvailable": 2
   },
   {
-    "_id": "l88sk29dls47",
     "itemKey": "folder_red",
     "itemName": "Red Folder",
     "quantityAvailable": 4
   },
   {
-    "_id": "m10dks39ql22",
     "itemKey": "folder_yellow",
     "itemName": "Yellow Folder",
     "quantityAvailable": 2
   },
   {
-    "_id": "n72slq93kd01",
     "itemKey": "folder_purple",
     "itemName": "Purple Folder",
     "quantityAvailable": 1
   },
   {
-    "_id": "o39dk28slz77",
     "itemKey": "glue_bottle",
     "itemName": "Glue Bottle",
     "quantityAvailable": 1
   },
   {
-    "_id": "p84ksl29dlf6",
     "itemKey": "glue_stick",
     "itemName": "Glue Stick",
     "quantityAvailable": 29
   },
   {
-    "_id": "q73ksl10dlf9",
     "itemKey": "hand_sanitizer",
     "itemName": "Hand Sanitizer",
     "quantityAvailable": 1
   },
   {
-    "_id": "r91dk38slx55",
     "itemKey": "headphones",
     "itemName": "Headphones",
     "quantityAvailable": 4
   },
   {
-    "_id": "s20ksl73mdk4",
     "itemKey": "highlighter",
     "itemName": "Highlighter",
     "quantityAvailable": 3
   },
   {
-    "_id": "t63dk29slp21",
     "itemKey": "index_cards",
     "itemName": "Index Cards",
     "quantityAvailable": 1
   },
   {
-    "_id": "u92ksl38dlf2",
     "itemKey": "loose_leaf_paper",
     "itemName": "Loose Leaf Paper",
     "quantityAvailable": 2
   },
   {
-    "_id": "v47slq28dk90",
     "itemKey": "markers",
     "itemName": "Markers",
     "quantityAvailable": 5
   },
   {
-    "_id": "w29dks83pl44",
     "itemKey": "notebook",
     "itemName": "Spiral Notebook",
     "quantityAvailable": 11
   },
   {
-    "_id": "x73ksl92dl10",
     "itemKey": "page_protectors",
     "itemName": "Page Protectors",
     "quantityAvailable": 100
   },
   {
-    "_id": "y18slq72dk33",
     "itemKey": "pencil_box",
     "itemName": "Pencil Box",
     "quantityAvailable": 1
   },
   {
-    "_id": "z44kdl29slo8",
     "itemKey": "pencil_pouch",
     "itemName": "Pencil Pouch",
     "quantityAvailable": 1
   },
   {
-    "_id": "aa29dk38slq9",
     "itemKey": "pencils",
     "itemName": "Pencils",
     "quantityAvailable": 61
   },
   {
-    "_id": "bb72ksl10dlp4",
     "itemKey": "pens",
     "itemName": "Pens",
     "quantityAvailable": 1
   },
   {
-    "_id": "cc91dk38slx2",
     "itemKey": "pens_black",
     "itemName": "Black Pens",
     "quantityAvailable": 1
   },
   {
-    "_id": "dd20ksl73mdk5",
     "itemKey": "pens_blue",
     "itemName": "Blue Pens",
     "quantityAvailable": 1
   },
   {
-    "_id": "ee63dk29slp6",
     "itemKey": "pens_red",
     "itemName": "Red Pens",
     "quantityAvailable": 1
   },
   {
-    "_id": "ff92ksl38dlf7",
     "itemKey": "ruler",
     "itemName": "Ruler",
     "quantityAvailable": 1
   },
   {
-    "_id": "gg47slq28dk8",
     "itemKey": "scissors",
     "itemName": "Scissors",
     "quantityAvailable": 5
   },
   {
-    "_id": "hh29dks83pl9",
     "itemKey": "sharpie",
     "itemName": "Sharpie",
     "quantityAvailable": 2
   },
   {
-    "_id": "ii73ksl92dl3",
     "itemKey": "snacks",
     "itemName": "Snacks",
     "quantityAvailable": 2
   },
   {
-    "_id": "jj18slq72dk7",
     "itemKey": "tennis_shoes",
     "itemName": "Tennis Shoes",
     "quantityAvailable": 1
   },
   {
-    "_id": "kk44kdl29slo2",
     "itemKey": "tissues",
     "itemName": "Tissues",
     "quantityAvailable": 6
   },
   {
-    "_id": "ll29dk38slq5",
     "itemKey": "water_bottle",
     "itemName": "Water Bottle",
     "quantityAvailable": 1
   },
   {
-    "_id": "mm72ksl10dlp8",
     "itemKey": "watercolor_paints",
     "itemName": "Watercolor Paints",
     "quantityAvailable": 4
