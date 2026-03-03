@@ -76,10 +76,12 @@ export class AddFamilyComponent {
     ],
     email: [
       { type: 'required', message: 'Email is required' },
-      { type: 'email', message: 'Email must be formatted properly' }
+      { type: 'email', message: 'Email must be formatted properly' },
+      { type: 'minlength', message: 'School must be at least 2 characters long' }
     ],
     address: [
-      { type: 'required', message: 'Address is required' }
+      { type: 'required', message: 'Address is required' },
+      { type: 'minlength', message: 'School must be at least 2 characters long' }
     ],
     timeSlot: [
       { type: 'required', message: 'Time slot is required' }
@@ -146,7 +148,7 @@ export class AddFamilyComponent {
           null,
           { duration: 2000 }
         );
-        this.router.navigate(['/family/', newId]);
+        this.router.navigate(['/family', newId]);
       },
       error: err => {
         if (err.status === 400) {

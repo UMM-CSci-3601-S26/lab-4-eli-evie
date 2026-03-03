@@ -114,24 +114,6 @@ describe('FamilyService', () => {
     // After every test, assert that there are no more pending requests.
     httpTestingController.verify();
   });
-  //   describe('When getSchool() is called with no parameters', () => {
-  //     it('calls `api/familiesByCompany`', waitForAsync(() => {
-  //       // Mock the `httpClient.get()` method, so that instead of making an HTTP request,
-  //       // it just returns our test data.
-  //       const mockedMethod = spyOn(httpClient, 'get').and.returnValue(of(testCompanies));
-
-  //       familyService.getCompanies().subscribe(() => {
-  //         // The mocked method (`httpClient.get()`) should have been called
-  //         // exactly one time.
-  //         expect(mockedMethod)
-  //           .withContext('one call')
-  //           .toHaveBeenCalledTimes(1);
-  //         expect(mockedMethod)
-  //           .withContext('talks to the correct endpoint')
-  //           .toHaveBeenCalledWith(familyService.familiesByCompanyUrl);
-  //       });
-  //     }));
-  //   });
 
   //   describe('When getFamilies() is called with no parameters', () => {
   //     /* We really don't care what `getFamilies()` returns. Since all the

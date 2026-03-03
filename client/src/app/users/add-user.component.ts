@@ -22,7 +22,6 @@ export class AddUserComponent {
   private snackBar = inject(MatSnackBar);
   private router = inject(Router);
 
-
   addUserForm = new FormGroup({
     // We allow alphanumeric input and limit the length for name.
     name: new FormControl('', Validators.compose([

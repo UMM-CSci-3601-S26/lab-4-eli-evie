@@ -1,20 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { AppComponent } from 'src/app/app.component';
-import { Family } from '../app/family/family';
+import { DashboardStats, Family } from '../app/family/family';
 import { FamilyService } from 'src/app/family/family.service';
 
-/**
- * A "mock" version of the `FamilyService` that can be used to test components
- * without having to create an actual service. It needs to be `Injectable` since
- * that's how services are typically provided to components.
- */
 @Injectable({
   providedIn: AppComponent
 })
-export class MockFamilyService implements Pick<FamilyService, 'getFamilyById' | 'addFamily'> {
+export class MockFamilyService implements Pick<FamilyService, 'getFamilyById' | 'addFamily' | 'getDashboardStats'> {
   //'getFamily' |
-  getFamilies: FamilyService;
+  // getFamilies: FamilyService;
   static testFamilies: Family[] = [
     {
       //family with one kid
@@ -84,27 +79,29 @@ export class MockFamilyService implements Pick<FamilyService, 'getFamilyById' | 
     },
   ];
 
-  // // skipcq: JS-0105
-  // // It's OK that the `_filters` argument isn't used here, so we'll disable
-  // // this warning for just his function.
-  // /* eslint-disable @typescript-eslint/no-unused-vars */
+  getDashboardStats(): Observable<DashboardStats> {
+    const totalFamilies = MockFamilyService.testFamilies.length;
 
-  // getFamilies(_filters: { age?: number; company?: string }): Observable<Family[]> {
-  //   // Our goal here isn't to test (and thus rewrite) the service, so we'll
-  //   // keep it simple and just return the test families regardless of what
-  //   // filters are passed in.
-  //   //
-  //   // The `of()` function converts a regular object or value into an
-  //   // `Observable` of that object or value.
-  //   return of(MockFamilyService.testFamilies);
-  // }
+    const totalStudents = MockFamilyService.testFamilies
+      .reduce((sum, f) => sum + (f.students?.length ?? 0), 0);
 
-  // skipcq: JS-0105
+    const suppliesRequested = MockFamilyService.testFamilies
+      .flatMap(f => f.students ?? [])
+      .flatMap(s => s.requestedSupplies ?? [])
+      .length;
+
+    return of({
+      totalFamilies,
+      totalStudents,
+      suppliesRequested
+    });
+  }
+
+  getFamilies(): Observable<Family[]> {
+    return of(MockFamilyService.testFamilies);
+  }
+
   getFamilyById(id: string): Observable<Family> {
-    // If the specified ID is for one of the first two test families,
-    // return that family, otherwise return `null` so
-    // we can test illegal family requests.
-    // If you need more, just add those in too.
     if (id === MockFamilyService.testFamilies[0]._id) {
       return of(MockFamilyService.testFamilies[0]);
     } else if (id === MockFamilyService.testFamilies[1]._id) {
@@ -115,15 +112,7 @@ export class MockFamilyService implements Pick<FamilyService, 'getFamilyById' | 
   }
 
   addFamily(newFamily: Partial<Family>): Observable<string> {
-    // Send post request to add a new family with the family data as the body.
-    // `res.id` should be the MongoDB ID of the newly added `Family`.
-    return of('')
+    return of('1');
   }
 
-  // filterFamilies(families: Family[], filters: {
-  //   name?: string;
-  //   company?: string;
-  // }): Family[] {
-  //   return []
-  // }
 }
