@@ -2,8 +2,6 @@ package umm3601.family;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-//import static org.junit.jupiter.api.Assertions.assertEquals;
-
 
 import java.util.Objects;
 
@@ -42,22 +40,6 @@ class FamilySpec {
 
     assertFalse(family1.equals(family2));
   }
-
-  // @Test
-  // void hashCodesAreBasedOnId() {
-  //   family1._id = FAKE_ID_STRING_1;
-  //   family2._id = FAKE_ID_STRING_1;
-  //   //if family id's are the same, the hashCodes should be as well
-
-  //   System.out.println("family1.hashCode() = " + family1.hashCode());
-  //   System.out.println("family2.hashCode() = " + family2.hashCode());
-
-  //   //assertTrue(family1.hashCode() == family2.hashCode());
-  //   assertEquals(family1.hashCode(), family2.hashCode());
-
-  //   //not sure why the hashCodes are different?
-  //   //Are our hashCodes for the Family page based on more than just the familyID?
-  // }
 
   @SuppressWarnings("unlikely-arg-type")
   @Test
