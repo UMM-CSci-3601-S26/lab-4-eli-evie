@@ -8,6 +8,7 @@ import { Family, DashboardStats } from './family';
 @Injectable({
   providedIn: 'root'
 })
+
 export class FamilyService {
   private httpClient = inject(HttpClient);
 

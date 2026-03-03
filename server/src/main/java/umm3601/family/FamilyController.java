@@ -42,6 +42,7 @@ public class FamilyController implements Controller {
   private static final String API_FAMILY = "/api/family";
   private static final String API_DASHBOARD = "/api/dashboard";
   private static final String API_FAMILY_BY_ID = "/api/family/{id}";
+  private static final String API_FAMILY_EXPORT = "/api/family/export";
 
   public static final String EMAIL_REGEX = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";
 
@@ -169,9 +170,13 @@ public class FamilyController implements Controller {
   public void addRoutes(Javalin server) {
     server.get(API_FAMILY, this::getFamilies);
     server.post(API_FAMILY, this::addNewFamily);
+
+    // Put specific routes FIRST
+    server.get(API_FAMILY_EXPORT, this::exportFamiliesAsCSV);
+    server.get(API_DASHBOARD, this::getDashboardStats);
+
+    // Put {id} routes LAST
     server.get(API_FAMILY_BY_ID, this::getFamily);
     server.delete(API_FAMILY_BY_ID, this::deleteFamily);
-    server.get(API_DASHBOARD, this::getDashboardStats);
-    server.get("/api/family/export", this::exportFamiliesAsCSV);
   }
 }

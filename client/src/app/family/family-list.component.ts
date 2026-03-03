@@ -39,6 +39,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
     FamilyCardComponent
   ],
 })
+
 export class FamilyListComponent {
   private familyService = inject(FamilyService);
 
