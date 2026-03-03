@@ -7,18 +7,33 @@ import java.util.Map;
 import org.bson.UuidRepresentation;
 import org.bson.types.ObjectId;
 import org.mongojack.JacksonMongoCollection;
-import io.javalin.http.HttpStatus;
+
 import io.javalin.Javalin;
-import io.javalin.http.Context;
+
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.result.DeleteResult;
 
 import io.javalin.http.BadRequestResponse;
 import io.javalin.http.NotFoundResponse;
+import io.javalin.http.Context;
+import io.javalin.http.HttpStatus;
 
 import static com.mongodb.client.model.Filters.eq;
 
 import umm3601.Controller;
+
+/* FamilyController Contains the Following:
+- getFamilies()
+- getFamily() /By ID/
+- addNewFamily()
+- deleteFamily() /By ID/
+- getDashboardStats() /Has its own API/
+*/
+
+/* Notes:
+I'd like to make more checks for adding a family.
+Just dont know how to make it work the way I wish.
+*/
 
 public class FamilyController implements Controller {
   private static final String API_FAMILY = "/api/family";
@@ -37,6 +52,17 @@ public class FamilyController implements Controller {
         UuidRepresentation.STANDARD);
   }
 
+  // GET all families
+  public void getFamilies(Context ctx) {
+    ArrayList<Family> matchingFamilies = familyCollection
+      .find()
+      .into(new ArrayList<>());
+
+    ctx.json(matchingFamilies);
+    ctx.status(HttpStatus.OK);
+  }
+
+  // GET family by ID
   public void getFamily(Context ctx) {
     String id = ctx.pathParam("id");
     Family family;
@@ -54,17 +80,8 @@ public class FamilyController implements Controller {
     }
   }
 
-  public void getFamilies(Context ctx) {
-    ArrayList<Family> matchingFamilies = familyCollection
-      .find()
-      .into(new ArrayList<>());
-
-    ctx.json(matchingFamilies);
-    ctx.status(HttpStatus.OK);
-  }
-
+  // POST new family
   public void addNewFamily(Context ctx) {
-
     String body = ctx.body();
     Family newFamily = ctx.bodyValidator(Family.class)
       .check(fam -> fam.email.matches(EMAIL_REGEX),
@@ -72,14 +89,18 @@ public class FamilyController implements Controller {
       // .check(fam -> fam.students,
       //   "Family must have a legal family role; body was " + body)
       .get();
+
     familyCollection.insertOne(newFamily);
+
     ctx.json(Map.of("id", newFamily._id));
     ctx.status(HttpStatus.CREATED);
   }
 
+  // DELETE family
   public void deleteFamily(Context ctx) {
     String id = ctx.pathParam("id");
     DeleteResult deleteResult = familyCollection.deleteOne(eq("_id", new ObjectId(id)));
+
     if (deleteResult.getDeletedCount() != 1) {
       ctx.status(HttpStatus.NOT_FOUND);
       throw new NotFoundResponse(
@@ -118,9 +139,9 @@ public class FamilyController implements Controller {
   @Override
   public void addRoutes(Javalin server) {
     server.get(API_FAMILY, this::getFamilies);
-    server.get(API_FAMILY_BY_ID, this::getFamily);
-    server.get(API_DASHBOARD, this::getDashboardStats);
     server.post(API_FAMILY, this::addNewFamily);
+    server.get(API_FAMILY_BY_ID, this::getFamily);
     server.delete(API_FAMILY_BY_ID, this::deleteFamily);
+    server.get(API_DASHBOARD, this::getDashboardStats);
   }
 }

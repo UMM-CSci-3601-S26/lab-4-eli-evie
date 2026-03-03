@@ -3,7 +3,6 @@ package umm3601.inventory;
 import static com.mongodb.client.model.Filters.eq;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 import org.bson.UuidRepresentation;
@@ -11,13 +10,27 @@ import org.bson.types.ObjectId;
 import org.mongojack.JacksonMongoCollection;
 
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.result.DeleteResult;
 
 import io.javalin.Javalin;
 import io.javalin.http.BadRequestResponse;
 import io.javalin.http.Context;
 import io.javalin.http.HttpStatus;
 import io.javalin.http.NotFoundResponse;
+
 import umm3601.Controller;
+
+/* FamilyController Contains the Following:
+- getAllInventory()
+- getInventoryById() /By ID/
+- addInventory()
+- updateInventoryQuantity() /By ID/
+- deleteInventory() /By ID/
+*/
+
+/* Notes:
+
+*/
 
 public class InventoryController implements Controller {
 
@@ -51,20 +64,18 @@ public class InventoryController implements Controller {
     String id = ctx.pathParam("id");
     Inventory inventory;
 
-    try { inventory = inventoryCollection
-      .find(eq("_id", new ObjectId(id)))
-      .first(); } catch (IllegalArgumentException e)
-
-      { throw new BadRequestResponse(
-        "The requested inventory id wasn't a legal Mongo Object ID.");
-      } if (inventory == null) { throw new NotFoundResponse(
-        "The requested inventory was not found");
-      } else {
-        ctx.json(inventory);
-        ctx.status(HttpStatus.OK);
-      }
+    try {
+      inventory = inventoryCollection.find(eq("_id", new ObjectId(id))).first();
+    } catch (IllegalArgumentException e) {
+      throw new BadRequestResponse("The requested inventory id wasn't a legal Mongo Object ID.");
     }
-
+    if (inventory == null) {
+      throw new NotFoundResponse("The requested inventory was not found");
+    } else {
+      ctx.json(inventory);
+      ctx.status(HttpStatus.OK);
+    }
+    }
 
   // POST new inventory item
   public void addInventory(Context ctx) {
@@ -82,10 +93,7 @@ public class InventoryController implements Controller {
 
     inventoryCollection.insertOne(newItem);
 
-    Map<String, String> result = new HashMap<>();
-    result.put("id", newItem._id);
-
-    ctx.json(result);
+    ctx.json(Map.of("id", newItem._id));
     ctx.status(HttpStatus.CREATED);
   }
 
@@ -109,7 +117,7 @@ public class InventoryController implements Controller {
   // DELETE inventory item
   public void deleteInventory(Context ctx) {
     String id = ctx.pathParam("id");
-    var deleteResult = inventoryCollection.removeById(id);
+    DeleteResult deleteResult = inventoryCollection.deleteOne(eq("_id", new ObjectId(id)));
 
     if (deleteResult.getDeletedCount() != 1) {
       ctx.status(HttpStatus.NOT_FOUND);
