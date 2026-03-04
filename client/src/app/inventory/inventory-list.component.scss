@@ -1,0 +1,60 @@
+.inventory-container {
+  padding: 16px;
+  position: relative;
+}
+
+.inventory-table {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.inventory-header,
+.inventory-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.5fr 0.5fr;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 0;
+}
+
+.inventory-header {
+  font-weight: 600;
+  border-bottom: 1px solid #ddd;
+}
+
+.inventory-row {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.inventory-row:hover {
+  background: #fafafa;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.quantity-controls button {
+  width: 28px;
+  height: 28px;
+}
+
+.quantity-number {
+  min-width: 24px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.item-key {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.add-button {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+}

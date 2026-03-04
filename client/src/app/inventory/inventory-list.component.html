@@ -1,33 +1,69 @@
-<mat-card>
+<mat-card class="inventory-container">
   <mat-card-header>
     <mat-card-title>Inventory</mat-card-title>
   </mat-card-header>
-  <mat-card-content>
-    @if (inventoryItems()) {
-      <div class="inventory-list">
-        @for (item of inventoryItems(); track item._id) {
-          <div class="inventory-item">
-            <strong>{{ item.itemName }}</strong> ({{ item.itemKey }}) - Quantity: {{ item.quantityAvailable }}
 
-            <!-- Optional per-item actions -->
-            <button mat-mini-fab color="primary" (click)="updateQuantity(item._id!, item.quantityAvailable + 1)">
-              <mat-icon>add</mat-icon>
-            </button>
-            <button mat-mini-fab color="warn" (click)="deleteItem(item._id!)">
+  <mat-card-content>
+
+    @if (inventoryItems()) {
+
+      <div class="inventory-table">
+
+        <div class="inventory-header">
+          <span>Name</span>
+          <span>Key</span>
+          <span>Quantity</span>
+          <span>Actions</span>
+        </div>
+
+        @for (item of inventoryItems(); track item._id) {
+
+          <div class="inventory-row">
+
+            <span class="item-name">{{ item.itemName }}</span>
+
+            <span class="item-key">{{ item.itemKey }}</span>
+
+            <div class="quantity-controls">
+              <button mat-icon-button
+                      (click)="updateQuantity(item._id!, item.quantityAvailable - 1)"
+                      [disabled]="item.quantityAvailable === 0">
+                <mat-icon>remove</mat-icon>
+              </button>
+
+              <span class="quantity-number">
+                {{ item.quantityAvailable }}
+              </span>
+
+              <button mat-icon-button
+                      (click)="updateQuantity(item._id!, item.quantityAvailable + 1)">
+                <mat-icon>add</mat-icon>
+              </button>
+            </div>
+
+            <button mat-icon-button
+                    color="warn"
+                    (click)="confirmDelete(item._id!)">
               <mat-icon>delete</mat-icon>
             </button>
+
           </div>
         }
+
       </div>
+
     } @else {
       <mat-error>
-        Inventory is empty or could not load. Please check the server.
+        Inventory is empty or could not load.
       </mat-error>
     }
+
   </mat-card-content>
 
-  <button mat-fab matTooltip="Add Inventory" matTooltipPosition="left" routerLink="/inventory/new"
-    data-test="addInventoryButton">
-    <mat-icon class="md-24" aria-label="Add Inventory">add</mat-icon>
+  <button mat-mini-fab
+          color="primary"
+          class="add-button"
+          routerLink="/inventory/new">
+    <mat-icon>add</mat-icon>
   </button>
 </mat-card>

@@ -6,11 +6,12 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { MatCardHeader, MatCard, MatCardTitle, MatCardContent } from "@angular/material/card";
 import { MatIcon } from "@angular/material/icon";
 import { MatError } from "@angular/material/form-field";
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-inventory',
   templateUrl: './inventory-list.component.html',
-  imports: [MatCardHeader, MatCard, MatCardTitle, MatCardContent, MatIcon, MatError],
+  imports: [MatCardHeader, MatCard, MatCardTitle, MatCardContent, MatIcon, MatError, RouterLink],
 })
 
 export class InventoryListComponent {
@@ -21,17 +22,26 @@ export class InventoryListComponent {
   );
 
   // Delete or update triggers re-fetch
-  deleteItem(id: string) {
-    this.inventoryService.deleteInventory(id).subscribe(() => this.refreshInventory());
+  // deleteItem(id: string) {
+  //   this.inventoryService.deleteInventory(id);
+  // }
+
+  reload(): void {
+    window.location.reload()
   }
 
   updateQuantity(id: string, quantity: number) {
-    this.inventoryService.updateQuantity(id, quantity).subscribe(() => this.refreshInventory());
+    this.inventoryService.updateQuantity(id, quantity).subscribe(() => {
+      this.reload();
+    });
   }
 
-  private refreshInventory() {
-    this.inventoryItems = toSignal<InventoryItem[]>(
-      this.inventoryService.getInventory().pipe(catchError(() => of([])))
-    );
+  confirmDelete(id: string) {
+    const confirmed = confirm('Are you sure you want to delete this item?');
+    if (confirmed) {
+      this.inventoryService.deleteInventory(id).subscribe(() => {
+        this.reload();
+      });
+    }
   }
 }
