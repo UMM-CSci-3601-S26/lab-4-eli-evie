@@ -10,6 +10,7 @@ import org.bson.types.ObjectId;
 import org.mongojack.JacksonMongoCollection;
 
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Sorts;
 import com.mongodb.client.result.DeleteResult;
 
 import io.javalin.Javalin;
@@ -53,6 +54,7 @@ public class InventoryController implements Controller {
   public void getAllInventory(Context ctx) {
     ArrayList<Inventory> inventory = inventoryCollection
       .find()
+      .sort(Sorts.ascending("itemName"))
       .into(new ArrayList<>());
 
     ctx.json(inventory);

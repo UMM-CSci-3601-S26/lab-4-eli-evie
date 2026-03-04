@@ -1,0 +1,34 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Inventory</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    @if (inventoryItems()) {
+      <div class="inventory-list">
+        @for (item of inventoryItems(); track item._id) {
+          <div class="inventory-item">
+            <strong>{{ item.itemName }}</strong> ({{ item.itemKey }}) - Quantity: {{ item.quantityAvailable }}
+
+            <!-- Optional per-item actions -->
+            <button mat-mini-fab color="primary" (click)="updateQuantity(item._id!, item.quantityAvailable + 1)">
+              <mat-icon>add</mat-icon>
+            </button>
+            <button mat-mini-fab color="warn" (click)="deleteItem(item._id!)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        }
+      </div>
+    } @else {
+      <mat-error>
+        Inventory is empty or could not load. Please check the server.
+      </mat-error>
+    }
+  </mat-card-content>
+
+  <!-- Optional global Add button -->
+  <button mat-fab matTooltip="Add Inventory" matTooltipPosition="left" routerLink="/inventory/new"
+    data-test="addInventoryButton">
+    <mat-icon class="md-24" aria-label="Add Inventory">add</mat-icon>
+  </button>
+</mat-card>
