@@ -4,6 +4,8 @@ import static com.mongodb.client.model.Filters.eq;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -23,6 +25,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import com.mongodb.MongoClientSettings;
@@ -32,6 +35,7 @@ import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
+import io.javalin.Javalin;
 import io.javalin.http.BadRequestResponse;
 import io.javalin.http.Context;
 import io.javalin.http.HttpStatus;
@@ -171,6 +175,17 @@ class FamilyControllerSpec {
   }
 
   @Test
+  void addsRoutes() {
+    Javalin mockServer = mock(Javalin.class);
+
+    familyController.addRoutes(mockServer);
+
+    verify(mockServer, Mockito.atLeast(4)).get(any(), any());
+    verify(mockServer, Mockito.atLeastOnce()).post(any(), any());
+    verify(mockServer, Mockito.atLeastOnce()).delete(any(), any());
+  }
+
+  @Test
   void canGetAllFamilies() throws IOException {
     when(ctx.queryParamMap()).thenReturn(Collections.emptyMap());
     familyController.getFamilies(ctx);
@@ -304,6 +319,24 @@ class FamilyControllerSpec {
   }
 
   @Test
+  void deleteFamilyNotFound() {
+
+    // Valid ObjectId format, but not in database
+    String nonExistentId = new ObjectId().toString();
+    when(ctx.pathParam("id")).thenReturn(nonExistentId);
+
+    NotFoundResponse exception =
+      assertThrows(NotFoundResponse.class, () -> {
+        familyController.deleteFamily(ctx);
+      });
+
+    verify(ctx).status(HttpStatus.NOT_FOUND);
+
+    assertTrue(exception.getMessage().contains(nonExistentId));
+    assertTrue(exception.getMessage().contains("Was unable to delete Family ID"));
+  }
+
+  @Test
   void getDashboardStats() {
 
     familyController.getDashboardStats(ctx);
@@ -320,5 +353,38 @@ class FamilyControllerSpec {
       (int) db.getCollection("family").countDocuments(),
       result.get("totalFamilies")
     );
+  }
+
+  @Test
+  void exportFamiliesAsCSVProducesCorrectCSV() {
+    familyController.exportFamiliesAsCSV(ctx);
+
+    ArgumentCaptor<String> resultCaptor = ArgumentCaptor.forClass(String.class);
+
+    verify(ctx).result(resultCaptor.capture());
+    verify(ctx).contentType("text/csv");
+    verify(ctx).status(HttpStatus.OK);
+
+    String csv = resultCaptor.getValue();
+
+    // Check header
+    assertTrue(csv.contains(
+      "Guardian Name,Email,Address,Time Slot,Number of Students"));
+
+    // Check Jane Doe (2 students)
+    assertTrue(csv.contains(
+      "\"Jane Doe\",\"jane@email.com\",\"123 Street\",\"10:00-11:00\",2"));
+
+    // Check John Christensen (2 students)
+    assertTrue(csv.contains(
+      "\"John Christensen\",\"jchristensen@email.com\",\"713 Broadway\",\"8:00-9:00\",2"));
+
+    // Check John Johnson (1 student)
+    assertTrue(csv.contains(
+      "\"John Johnson\",\"jjohnson@email.com\",\"456 Avenue\",\"2:00-3:00\",1"));
+
+    // Check Bob Jones (1 student)
+    assertTrue(csv.contains(
+      "\"Bob Jones\",\"bob@email.com\",\"456 Oak Ave\",\"2:00-3:00\",1"));
   }
 }

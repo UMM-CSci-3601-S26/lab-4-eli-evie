@@ -22,7 +22,6 @@ import io.javalin.http.HttpStatus;
 import static com.mongodb.client.model.Filters.eq;
 
 import umm3601.Controller;
-import umm3601.family.Family.StudentInfo;
 
 /* FamilyController Contains the Following:
 - getFamilies()
@@ -163,6 +162,7 @@ public class FamilyController implements Controller {
 
     ctx.contentType("text/csv");
     ctx.header("Content-Disposition", "attachment; filename=families.csv");
+    ctx.status(HttpStatus.OK);
     ctx.result(csv.toString());
   }
 

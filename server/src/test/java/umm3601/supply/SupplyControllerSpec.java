@@ -2,6 +2,8 @@ package umm3601.supply;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -22,6 +24,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import com.mongodb.MongoClientSettings;
@@ -31,6 +34,8 @@ import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
+import io.javalin.Javalin;
+import io.javalin.http.BadRequestResponse;
 import io.javalin.http.Context;
 import io.javalin.http.HttpStatus;
 import io.javalin.http.NotFoundResponse;
@@ -131,14 +136,17 @@ public class SupplyControllerSpec {
     supplyController = new SupplyController(db);
   }
 
-  // @Test
-  // void addsRoutes() {
-  //   Javalin mockServer = mock(Javalin.class);
-  //   supplyController.addRoutes(mockServer);
-  //   verify(mockServer, Mockito.atLeast(3)).get(any(), any());
-  //   verify(mockServer, Mockito.atLeastOnce()).post(any(), any());
-  //   verify(mockServer, Mockito.atLeastOnce()).delete(any(), any());
-  // }
+  @Test
+  void addsRoutes() {
+    Javalin mockServer = mock(Javalin.class);
+
+    supplyController.addRoutes(mockServer);
+
+    verify(mockServer, Mockito.atLeast(2)).get(any(), any());
+    // verify(mockServer, Mockito.atLeastOnce()).post(any(), any());
+    // verify(mockServer, Mockito.atLeastOnce()).delete(any(), any());
+    // verify(mockServer, Mockito.atLeastOnce()).put(any(), any());
+  }
 
   @Test
   void canGetAllSupplies() throws IOException {
@@ -176,6 +184,17 @@ public class SupplyControllerSpec {
     });
 
     assertEquals("The requested supply was not found", exception.getMessage());
+  }
+
+  @Test
+  void getInventoryWithBadId() throws IOException {
+    when(ctx.pathParam("id")).thenReturn("bad");
+
+    Throwable exception = assertThrows(BadRequestResponse.class, () -> {
+      supplyController.getSupply(ctx);
+    });
+
+    assertEquals("The requested supply id wasn't a legal Mongo Object ID.", exception.getMessage());
   }
 
   @Test
@@ -233,7 +252,25 @@ public class SupplyControllerSpec {
   }
 
   @Test
-  void canGetSupplyWithAll() throws IOException {
+  void canGetSupplyWithItemKey() throws IOException {
+    Map<String, List<String>> queryParams = new HashMap<>();
+    queryParams.put(SupplyController.ITEM_KEY, Arrays.asList(new String[] {"backpack"}));
+    when(ctx.queryParamMap()).thenReturn(queryParams);
+    when(ctx.queryParam(SupplyController.ITEM_KEY)).thenReturn("backpack");
+
+    supplyController.getSupplies(ctx);
+
+    verify(ctx).json(supplyArrayListCaptor.capture());
+    verify(ctx).status(HttpStatus.OK);
+
+    // Confirm that all the users passed to `json` work for OHMNET.
+    for (Supply supply : supplyArrayListCaptor.getValue()) {
+      assertEquals("backpack", supply.itemKey);
+    }
+  }
+
+  @Test
+  void canGetSupplyWithThree() throws IOException {
     Map<String, List<String>> queryParams = new HashMap<>();
     queryParams.put(SupplyController.YEAR_KEY, Arrays.asList(new String[] {"2025-2026"}));
     queryParams.put(SupplyController.SCHOOL_KEY, Arrays.asList(new String[] {"SMS"}));

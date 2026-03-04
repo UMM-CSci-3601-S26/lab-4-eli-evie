@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -24,6 +26,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import com.mongodb.MongoClientSettings;
@@ -33,6 +36,7 @@ import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
+import io.javalin.Javalin;
 import io.javalin.http.BadRequestResponse;
 import io.javalin.http.Context;
 import io.javalin.http.HttpStatus;
@@ -117,14 +121,17 @@ public class InventoryControllerSpec {
     inventoryController = new InventoryController(db);
   }
 
-  // @Test
-  // void addsRoutes() {
-  //   Javalin mockServer = mock(Javalin.class);
-  //   inventoryController.addRoutes(mockServer);
-  //   verify(mockServer, Mockito.atLeast(3)).get(any(), any());
-  //   verify(mockServer, Mockito.atLeastOnce()).post(any(), any());
-  //   verify(mockServer, Mockito.atLeastOnce()).delete(any(), any());
-  // }
+  @Test
+  void addsRoutes() {
+    Javalin mockServer = mock(Javalin.class);
+
+    inventoryController.addRoutes(mockServer);
+
+    verify(mockServer, Mockito.atLeast(2)).get(any(), any());
+    verify(mockServer, Mockito.atLeastOnce()).post(any(), any());
+    verify(mockServer, Mockito.atLeastOnce()).delete(any(), any());
+    verify(mockServer, Mockito.atLeastOnce()).put(any(), any());
+  }
 
   @Test
   void canGetAllIventory() throws IOException {
@@ -250,6 +257,143 @@ public class InventoryControllerSpec {
   }
 
   @Test
+  void addInventoryWithEmptyItemKeyFails() {
+
+    String body = """
+      {
+        "itemKey": "",
+        "itemName": "Markers",
+        "quantityAvailable": 5
+      }
+    """;
+
+    when(ctx.bodyValidator(Inventory.class))
+      .thenReturn(new BodyValidator<>(
+        body,
+        Inventory.class,
+        () -> javalinJackson.fromJsonString(body, Inventory.class)
+      ));
+
+    ValidationException exception =
+      assertThrows(ValidationException.class, () -> {
+        inventoryController.addInventory(ctx);
+      });
+
+    String exceptionMessage = exception.getErrors().get("REQUEST_BODY").get(0).toString();
+
+    assertTrue(exceptionMessage.contains("non-empty item key"));
+  }
+
+  @Test
+  void addInventoryWithEmptyItemNameFails() {
+
+    String body = """
+      {
+        "itemKey": "markers",
+        "itemName": "",
+        "quantityAvailable": 5
+      }
+    """;
+
+    when(ctx.bodyValidator(Inventory.class))
+      .thenReturn(new BodyValidator<>(
+        body,
+        Inventory.class,
+        () -> javalinJackson.fromJsonString(body, Inventory.class)
+      ));
+
+    ValidationException exception =
+      assertThrows(ValidationException.class, () -> {
+        inventoryController.addInventory(ctx);
+      });
+
+    String exceptionMessage = exception.getErrors().get("REQUEST_BODY").get(0).toString();
+
+    assertTrue(exceptionMessage.contains("non-empty item name"));
+  }
+
+  @Test
+  void updateInventoryQuantityWorks() {
+    String id = crayonsID.toString();
+    when(ctx.pathParam("id")).thenReturn(id);
+
+    String body = """
+      { "quantityAvailable": 42 }
+    """;
+
+    when(ctx.bodyValidator(QuantityUpdate.class))
+      .thenReturn(new BodyValidator<>(
+        body,
+        QuantityUpdate.class,
+        () -> javalinJackson.fromJsonString(body, QuantityUpdate.class)
+      ));
+
+    inventoryController.updateInventoryQuantity(ctx);
+
+    verify(ctx).status(HttpStatus.OK);
+
+    Document updated = db.getCollection("inventory")
+      .find(eq("_id", new ObjectId(id))).first();
+
+    assertEquals(42, updated.get("quantityAvailable"));
+  }
+
+  @Test
+  void updateInventoryQuantityNegativeFails() {
+    String id = crayonsID.toString();
+    when(ctx.pathParam("id")).thenReturn(id);
+
+    String body = """
+      { "quantityAvailable": -5 }
+    """;
+
+    when(ctx.bodyValidator(QuantityUpdate.class))
+      .thenReturn(new BodyValidator<>(
+        body,
+        QuantityUpdate.class,
+        () -> javalinJackson.fromJsonString(body, QuantityUpdate.class)
+      ));
+
+    ValidationException exception =
+      assertThrows(ValidationException.class, () -> {
+        inventoryController.updateInventoryQuantity(ctx);
+      });
+
+    assertTrue(
+      exception.getErrors()
+        .get("REQUEST_BODY")
+        .get(0)
+        .toString()
+        .contains("Quantity must be >= 0")
+    );
+  }
+
+  @Test
+  void updateInventoryQuantityNotFound() {
+
+    String fakeId = new ObjectId().toString();
+    when(ctx.pathParam("id")).thenReturn(fakeId);
+
+    String body = """
+      { "quantityAvailable": 10 }
+    """;
+
+    when(ctx.bodyValidator(QuantityUpdate.class))
+      .thenReturn(new BodyValidator<>(
+        body,
+        QuantityUpdate.class,
+        () -> javalinJackson.fromJsonString(body, QuantityUpdate.class)
+      ));
+
+    NotFoundResponse exception =
+      assertThrows(NotFoundResponse.class, () -> {
+        inventoryController.updateInventoryQuantity(ctx);
+      });
+
+    assertEquals("Inventory item not found", exception.getMessage());
+  }
+
+  @Test
   void deleteFoundInventory() throws IOException {
     String testID = crayonsID.toString();
     when(ctx.pathParam("id")).thenReturn(testID);
@@ -277,5 +421,14 @@ public class InventoryControllerSpec {
 
     verify(ctx).status(HttpStatus.NOT_FOUND);
     assertEquals(0, db.getCollection("inventory").countDocuments(eq("_id", new ObjectId(testID))));
+  }
+
+  @Test
+  void deleteInventoryWithBadId() {
+    when(ctx.pathParam("id")).thenReturn("bad");
+
+    assertThrows(IllegalArgumentException.class, () -> {
+      inventoryController.deleteInventory(ctx);
+    });
   }
 }

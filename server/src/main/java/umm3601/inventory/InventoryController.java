@@ -85,11 +85,11 @@ public class InventoryController implements Controller {
     Inventory newItem = ctx.bodyValidator(Inventory.class)
       .check(inventory -> inventory.quantityAvailable >= 0,
         "Quantity must be >= 0")
-      .check(inventory -> inventory.itemKey != null,
+      .check(inventory -> inventory.itemKey != null && inventory.itemKey.length() > 0,
         "Inventory must have a non-empty item key")
       .check(inventory -> inventory.itemKey.matches(ITEMKEY_REGEX),
         "Inventory Item Key must be lowercase with no spaces")
-      .check(inventory -> inventory.itemName != null,
+      .check(inventory -> inventory.itemName != null && inventory.itemName.length() > 0,
         "Inventory must have a non-empty item name")
       .get();
 
