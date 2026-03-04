@@ -1,10 +1,10 @@
 import { Location } from '@angular/common';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing'; //fakeAsync, flush, tick
-import { AbstractControl, FormGroup } from '@angular/forms';
+import { AbstractControl, FormArray, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router'; //provideRouter
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { throwError } from 'rxjs'; //of
+import { of, throwError } from 'rxjs'; //of
 import { MockFamilyService } from 'src/testing/family.service.mock';
 import { AddFamilyComponent } from './add-family.component';
 import { provideHttpClient } from '@angular/common/http';
@@ -113,6 +113,15 @@ describe('AddFamilyComponent', () => {
       expect(students.length).toBe(1);
       expect(students.at(0)).toBeTruthy();
       expect(students.at(0) instanceof FormGroup).toBeTrue();
+    });
+
+    it('should remove a student when removeStudent() is called', () => {
+      addFamilyComponent.removeStudent(0);
+      const students = addFamilyComponent.students;
+
+      expect(students.length).toBe(0);
+      expect(students.at(0)).toBeFalsy();
+      expect(students.at(0) instanceof FormGroup).toBeFalse();
     });
 
     it('when all required fields are valid, the the whole form should be valid', () => {
@@ -278,6 +287,11 @@ describe('AddFamilyComponent', () => {
       addFamilyComponent.addFamilyForm.get(controlName).setErrors({'unknown': true});
       expect(addFamilyComponent.getErrorMessage(controlName)).toEqual('Unknown error');
     });
+
+    it('should return an empty string if the validation method is not an array', () => {
+      const result = addFamilyComponent.getErrorMessage('students');
+      expect(result).toBe('');
+    })
   });
 });
 
@@ -411,5 +425,57 @@ describe('AddFamilyComponent#submitForm()', () => {
     expect(addFamilySpy).toHaveBeenCalledWith(component.addFamilyForm.value);
     // Confirm that we're still at the same path.
     expect(location.path()).toBe(path);
+  });
+
+  it('should transform requestedSupplies string into trimmed array', () => {
+    component.addFamilyForm.patchValue({
+      students: [{
+        name: 'John',
+        grade: '5',
+        school: 'ABC',
+        requestedSupplies: 'pencil, eraser , notebook '
+      }]
+    });
+    const addFamilySpy = spyOn(familyService, 'addFamily')
+      .and.returnValue(of('1'));
+    component.submitForm();
+    expect(addFamilySpy).toHaveBeenCalledWith(
+      jasmine.objectContaining({
+        students: [
+          jasmine.objectContaining({
+            requestedSupplies: ['pencil', 'eraser', 'notebook']
+          })
+        ]
+      })
+    );
+  });
+
+  it('should transform requestedSupplies string into trimmed array', () => {
+
+    const studentsArray = component.addFamilyForm.get('students') as FormArray;
+
+    studentsArray.push(
+      new FormGroup({
+        name: new FormControl('John'),
+        grade: new FormControl('5'),
+        school: new FormControl('ABC'),
+        requestedSupplies: new FormControl('pencil, eraser , notebook ')
+      })
+    );
+
+    const addFamilySpy = spyOn(familyService, 'addFamily')
+      .and.returnValue(of('1'));
+
+    component.submitForm();
+
+    expect(addFamilySpy).toHaveBeenCalledWith(
+      jasmine.objectContaining({
+        students: [
+          jasmine.objectContaining({
+            requestedSupplies: ['pencil', 'eraser', 'notebook']
+          })
+        ]
+      })
+    );
   });
 });

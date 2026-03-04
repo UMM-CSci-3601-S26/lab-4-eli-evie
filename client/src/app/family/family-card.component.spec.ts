@@ -1,46 +1,59 @@
-// import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-// import { FamilyCardComponent } from './family-card.component';
-// import { Family } from './family';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { FamilyCardComponent } from './family-card.component';
+import { Family } from './family';
 
-// describe('FamilyCardComponent', () => {
-//   let component: FamilyCardComponent;
-//   let fixture: ComponentFixture<FamilyCardComponent>;
-//   let expectedFamily: Family;
+describe('FamilyCardComponent', () => {
+  let component: FamilyCardComponent;
+  let fixture: ComponentFixture<FamilyCardComponent>;
+  let expectedFamily: Family;
 
-//   beforeEach(waitForAsync(() => {
-//     TestBed.configureTestingModule({
-//       imports: [
-//         FamilyCardComponent
-//       ]
-//     })
-//       .compileComponents();
-//   }));
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      imports: [
+        FamilyCardComponent
+      ]
+    })
+      .compileComponents();
+  }));
 
-//   beforeEach(() => {
-//     fixture = TestBed.createComponent(FamilyCardComponent);
-//     component = fixture.componentInstance;
-//     expectedFamily = {
-//       _id: 'chris_id',
-//       name: 'Chris',
-//       age: 25,
-//       company: 'UMM',
-//       email: 'chris@this.that',
-//       role: 'admin',
-//       avatar: 'https://gravatar.com/avatar/8c9616d6cc5de638ea6920fb5d65fc6c?d=identicon'
-//     };
-//     fixture.componentRef.setInput('family', expectedFamily);
-//     fixture.detectChanges();
-//   });
+  beforeEach(() => {
+    fixture = TestBed.createComponent(FamilyCardComponent);
+    component = fixture.componentInstance;
+    expectedFamily = {
+    //family with 2 kids
+      _id: 'chris_id',
+      guardianName: 'Chris',
+      address: '123 Street',
+      email: 'chris@email.com',
+      timeSlot: '9:00-10:00',
+      students: [
+        {
+          name: 'Chris Jr.',
+          grade: '2',
+          school: "Morris Elementary",
+          requestedSupplies: ['backpack', 'markers']
+        },
+        {
+          name: 'Christy',
+          grade: '2',
+          school: "Morris Elementary",
+          requestedSupplies: ['backpack', 'pencils']
+        }
+      ]
+    };
+    fixture.componentRef.setInput('family', expectedFamily);
+    fixture.detectChanges();
+  });
 
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 
-//   it('should be associated with the correct family', () => {
-//     expect(component.family()).toEqual(expectedFamily);
-//   });
+  it('should be associated with the correct family', () => {
+    expect(component.family()).toEqual(expectedFamily);
+  });
 
-//   it('should be the family named Chris', () => {
-//     expect(component.family().name).toEqual('Chris');
-//   });
-// });
+  it('should be the family named Chris', () => {
+    expect(component.family().guardianName).toEqual('Chris');
+  });
+});
