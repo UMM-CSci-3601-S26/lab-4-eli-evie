@@ -12,7 +12,7 @@ describe('Add family', () => {
     page.getTitle().should('have.text', 'New Family');
   });
 
-  it('Should enable and disable the add family button', () => {
+  it('Should be disable the add family button when family does not have a student added', () => {
     page.addFamilyButton().should('be.disabled');
     page.getFormField('guardianName').type('test');
     page.addFamilyButton().should('be.disabled');
@@ -22,14 +22,7 @@ describe('Add family', () => {
     page.addFamilyButton().should('be.disabled');
     page.getFormField('email').clear().type('familytest@email.com');
 
-    // page.addStudentButton().click();
-    // page.getStudentField(0, 'name').type('Example Student');
-    // page.getStudentField(0, 'grade').type('1');
-    // page.getStudentField(0, 'school').type('Morris Elementary');
-    // page.getStudentField(0, 'requestedSupplies').type('pencils');
-
-    // all the required fields have valid input, then it should be enabled
-    page.addFamilyButton().should('be.enabled');
+    page.addFamilyButton().should('be.disabled');
   });
 
   // it('Should show error messages for invalid inputs', () => {
