@@ -7,7 +7,7 @@ import { InventoryService } from 'src/app/inventory/inventory.service';
 @Injectable({
   providedIn: AppComponent
 })
-export class MockInventoryService implements Pick<InventoryService, 'getInventoryById' | 'addInventory' | 'addInventory' | 'deleteInventory'> {
+export class MockInventoryService implements Pick<InventoryService, 'getInventoryById' | 'getInventoryById'  /*| 'addInventory' | 'deleteInventory'*/> {
   //'getInventory' |
   // getFamilies: InventoryService;
   static testInventory: InventoryItem[] = [
@@ -45,13 +45,13 @@ export class MockInventoryService implements Pick<InventoryService, 'getInventor
     }
   }
 
-  addInventory(newInventory: Partial<InventoryItem>): Observable<string> {
-    return of('1');
-  }
+  // addInventory(newInventory: Partial<InventoryItem>): Observable<string> {
+  //   return of('1');
+  // }
 
-  deleteInventory(id: string): Observable<string> {
-    return of('1');
-  }
+  // deleteInventory(id: string): Observable<string> {
+  //   return of('1');
+  // }
 
   exportFamilies(): Observable<string> {
     return of('csv-data');

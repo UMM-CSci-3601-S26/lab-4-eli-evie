@@ -7,7 +7,7 @@ import { FamilyService } from 'src/app/family/family.service';
 @Injectable({
   providedIn: AppComponent
 })
-export class MockFamilyService implements Pick<FamilyService, 'getFamilyById' | 'addFamily' | 'getDashboardStats'> {
+export class MockFamilyService implements Pick<FamilyService, 'getFamilyById' | 'getDashboardStats' | 'getFamilies' | 'exportFamilies'> {
   //'getFamily' |
   // getFamilies: FamilyService;
   static testFamilies: Family[] = [
@@ -116,13 +116,13 @@ export class MockFamilyService implements Pick<FamilyService, 'getFamilyById' | 
     }
   }
 
-  addFamily(newFamily: Partial<Family>): Observable<string> {
-    return of('1');
-  }
+  // addFamily(newFamily: Partial<Family>): Observable<string> {
+  //   return of('1');
+  // }
 
-  deleteFamily(id: string): Observable<string> {
-    return of('1');
-  }
+  // deleteFamily(id: string): Observable<string> {
+  //   return of('1');
+  // }
 
   exportFamilies(): Observable<string> {
     return of('csv-data');

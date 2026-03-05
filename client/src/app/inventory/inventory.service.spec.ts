@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams, provideHttpClient } from '@angular/common/http'; //HttpParams
+import { HttpClient, provideHttpClient } from '@angular/common/http'; //HttpParams
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { TestBed, waitForAsync } from '@angular/core/testing';
 import { of } from 'rxjs';
