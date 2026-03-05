@@ -123,49 +123,42 @@ describe('AddInventoryComponent', () => {
   });
 
 
-  // describe('getErrorMessage()', () => {
-  //   it('should return the correct error message', () => {
-  //     let controlName: keyof typeof addInventoryComponent.addInventoryValidationMessages = 'guardianName';
-  //     addInventoryComponent.addInventoryForm.get(controlName).setErrors({'required': true});
-  //     expect(addInventoryComponent.getErrorMessage(controlName)).toEqual('Guardian name is required');
+  describe('getErrorMessage()', () => {
+    it('should return the correct error message', () => {
+      let controlName: keyof typeof addInventoryComponent.addInventoryValidationMessages = 'itemKey';
+      addInventoryComponent.addInventoryForm.get(controlName).setErrors({'required': true});
+      expect(addInventoryComponent.getErrorMessage(controlName)).toEqual('Item key is required');
 
-  //     // We don't need the type statement here because we're not using the
-  //     // same (previously typed) variable. We could use a `let` and the type statement
-  //     // if we wanted to create a new variable, though.
-  //     controlName = 'email';
-  //     addInventoryComponent.addInventoryForm.get(controlName).setErrors({'required': true});
-  //     expect(addInventoryComponent.getErrorMessage(controlName)).toEqual('Email is required');
+      controlName = 'itemName';
+      addInventoryComponent.addInventoryForm.get(controlName).setErrors({'required': true});
+      expect(addInventoryComponent.getErrorMessage(controlName)).toEqual('Item name is required');
 
-  //     controlName = 'email';
-  //     addInventoryComponent.addInventoryForm.get(controlName).setErrors({'email': true});
-  //     expect(addInventoryComponent.getErrorMessage(controlName)).toEqual('Email must be formatted properly');
-  //   });
+      controlName = 'quantityAvailable';
+      addInventoryComponent.addInventoryForm.get(controlName).setErrors({'required': true});
+      expect(addInventoryComponent.getErrorMessage(controlName)).toEqual('Quantity is required');
+    });
 
-  //   it('should return "Unknown error" if no error message is found', () => {
-  //     // The type statement is needed to ensure that `controlName` isn't just any
-  //     // random string, but rather one of the keys of the `addInventoryValidationMessages`
-  //     // map in the component.
-  //     const controlName: keyof typeof addInventoryComponent.addInventoryValidationMessages = 'guardianName';
-  //     addInventoryComponent.addInventoryForm.get(controlName).setErrors({'unknown': true});
-  //     expect(addInventoryComponent.getErrorMessage(controlName)).toEqual('Unknown error');
-  //   });
+    it('should return "Unknown error" if no error message is found', () => {
+      // The type statement is needed to ensure that `controlName` isn't just any
+      // random string, but rather one of the keys of the `addInventoryValidationMessages`
+      // map in the component.
+      const controlName: keyof typeof addInventoryComponent.addInventoryValidationMessages = 'itemKey';
+      addInventoryComponent.addInventoryForm.get(controlName).setErrors({'unknown': true});
+      expect(addInventoryComponent.getErrorMessage(controlName)).toEqual('Unknown error');
+    });
 
-  //   it('should return an empty string if the validation method is not an array', () => {
-  //     const result = addInventoryComponent.getErrorMessage('students');
-  //     expect(result).toBe('');
-  //   })
-  // });
+  });
 });
 
 // A lot of these tests mock the service using an approach like this doc example
 // https://angular.dev/guide/testing/components-scenarios#more-async-tests
 // The same way that the following allows the mock to be used:
-//
+
 // TestBed.configureTestingModule({
 //   providers: [{provide: TwainQuotes, useClass: MockTwainQuotes}], // A (more-async-tests) - provide + use class of the mock
 // });
 // const twainQuotes = TestBed.inject(TwainQuotes) as MockTwainQuotes; // B (more-async-tests) - inject the service as the mock
-//
+
 // Is how these tests work with the mock then being injected in
 
 describe('AddInventoryComponent#submitForm()', () => {

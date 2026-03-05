@@ -2,7 +2,7 @@ import { Family } from 'src/app/family/family';
 
 export class AddFamilyPage {
 
-  private readonly url = '/families/new';
+  private readonly url = '/family/new';
   private readonly title = '.add-family-title';
   private readonly button = '[data-test=confirmAddFamilyButton]';
   private readonly snackBar = '.mat-mdc-simple-snack-bar';
@@ -33,7 +33,7 @@ export class AddFamilyPage {
   }
 
   getFormField(fieldName: string) {
-    return cy.get(`${this.formFieldSelector} [formcontrolname=${fieldName}]`);
+    return cy.get(`[formcontrolname="${fieldName}"]`); //removed ${this.formFieldSelector}
   }
 
   getSnackBar() {
@@ -62,13 +62,15 @@ export class AddFamilyPage {
     this.getFormField(this.emailFieldName).type(newFamily.email);
 
     newFamily.students.forEach((student, i) => {
-      this.addStudentButton().click();
+      //this.addStudentButton().click();
 
       this.getStudentField(i, 'name').type(student.name);
       this.getStudentField(i, 'grade').type(student.grade);
       this.getStudentField(i, 'school').type(student.school);
-      this.getStudentField(i, 'requestedSupplies')
-        .type(student.requestedSupplies.join(', '));
+      if (student.requestedSupplies.length) {
+        this.getStudentField(i, 'requestedSupplies').type(student.requestedSupplies.join(', '));
+      }
+      this.addStudentButton().click();
     });
     return this.addFamilyButton().click();
   }

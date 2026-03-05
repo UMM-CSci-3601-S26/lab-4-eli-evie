@@ -42,7 +42,7 @@ export class AddInventoryComponent {
 
     quantityAvailable: [
       {type: 'required', message: 'Quantity is required'},
-      {type: 'min', message: 'Age must be at least 0'},
+      {type: 'min', message: 'Quantity must be at least 0'},
       {type: 'pattern', message: 'Quantity must be a whole number'}
     ]
   };

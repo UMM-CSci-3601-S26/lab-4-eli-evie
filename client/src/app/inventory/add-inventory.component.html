@@ -10,6 +10,7 @@
             <mat-form-field>
               <mat-label>Item Key</mat-label>
               <input matInput formControlName="itemKey"
+                data-test="itemKeyInput"
                 required>
               @if (formControlHasError('itemKey')) {
                 <mat-error data-test="nameError">
@@ -21,6 +22,7 @@
             <mat-form-field>
               <mat-label>Item Name</mat-label>
               <input matInput formControlName="itemName"
+                data-test="itemNameInput"
                 required>
               @if (formControlHasError('itemName')) {
                 <mat-error data-test="nameError">
@@ -32,7 +34,9 @@
             <mat-form-field>
               <mat-label>Quantity</mat-label>
               <input matInput type="number"
-                formControlName="quantityAvailable" required>
+                formControlName="quantityAvailable"
+                data-test="quantityInput"
+                required>
               @if (formControlHasError('quantityAvailable')) {
                 <mat-error data-test="ageError">
                   {{getErrorMessage('quantityAvailable')}}
@@ -45,7 +49,6 @@
         <mat-card-actions align="end">
           <button
             mat-button
-            type="button"
             color="primary"
             [disabled]="!addInventoryForm.valid"
             type="submit"
