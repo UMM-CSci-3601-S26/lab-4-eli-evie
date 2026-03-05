@@ -38,7 +38,7 @@ export class AddFamilyComponent {
 
     timeSlot: new FormControl('', Validators.required),
 
-    students: new FormArray([])
+    students: new FormArray([], Validators.required)
   });
 
   get students(): FormArray {

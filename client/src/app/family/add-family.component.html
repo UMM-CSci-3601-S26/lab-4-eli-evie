@@ -61,43 +61,43 @@
                     <mat-label>Name</mat-label>
                     <input matInput formControlName="name"
                       form ControlName = "name" required>
-                    @if (formControlHasError('name')) {
+                    <!-- @if (formControlHasError('name')) {
                       <mat-error data-test="nameError">
                         {{getErrorMessage('students')}}
                       </mat-error>
-                    }
+                    } -->
                   </mat-form-field>
 
                   <mat-form-field>
                     <mat-label>Grade</mat-label>
                     <input matInput formControlName="grade"
                       form ControlName = "grade" required>
-                    @if (formControlHasError('grade')) {
+                    <!-- @if (formControlHasError('grade')) {
                       <mat-error data-test="gradeError">
                         {{getErrorMessage('students')}}
                       </mat-error>
-                    }
+                    } -->
                   </mat-form-field>
 
                   <mat-form-field>
                     <mat-label>School</mat-label>
                     <input matInput formControlName="school"
                       form ControlName = "school" required>
-                    @if (formControlHasError('school')) {
+                    <!-- @if (formControlHasError('school')) {
                       <mat-error data-test="schoolError">
                         {{getErrorMessage('students')}}
                       </mat-error>
-                    }
+                    } -->
                   </mat-form-field>
 
                   <mat-form-field>
                     <mat-label>Requested Supplies</mat-label>
                     <input matInput formControlName="requestedSupplies">
-                  @if (formControlHasError('requestedSupplies')) {
+                  <!-- @if (formControlHasError('requestedSupplies')) {
                     <mat-error data-test="requestedSupplies">
                       {{getErrorMessage('students')}}
                     </mat-error>
-                  }
+                  } -->
                   </mat-form-field>
 
                   <button type="button" (click)="removeStudent(i)">
