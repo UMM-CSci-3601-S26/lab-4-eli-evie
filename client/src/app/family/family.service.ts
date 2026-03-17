@@ -27,7 +27,7 @@ export class FamilyService {
   }
 
   addFamily(newFamily: Partial<Family>): Observable<string> {
-    return this.httpClient.post<{id: string}>(this.familyUrl, newFamily).pipe(map(response => response.id));
+    return this.httpClient.post<{ id: string }>(this.familyUrl, newFamily).pipe(map(response => response.id));
   }
 
   deleteFamily(id: string): Observable<unknown> {

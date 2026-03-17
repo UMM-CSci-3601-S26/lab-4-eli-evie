@@ -1,6 +1,13 @@
 package umm3601.inventory;
 
-// Helper for updateInventoryQuantity()
+/**
+ * Helper class used for PUT /api/inventory/{id}.
+ *
+ * This wrapper exists so that updates only modify quantityAvailable,
+ * rather than replacing the entire Inventory object.
+ *
+ * This keeps updates safe and predictable in Iteration 1.
+ */
 public class QuantityUpdate {
 
   private int quantityAvailable;

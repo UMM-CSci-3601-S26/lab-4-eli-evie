@@ -11,7 +11,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterLink } from '@angular/router';
-import { catchError, of} from 'rxjs';
+import { catchError, of } from 'rxjs';
 import { Family } from './family';
 import { FamilyCardComponent } from './family-card.component';
 import { FamilyService } from './family.service';
@@ -43,7 +43,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 export class FamilyListComponent {
   private familyService = inject(FamilyService);
 
-  families = toSignal <Family[]>(
+  families = toSignal<Family[]>(
     this.familyService.getFamilies().pipe(
       catchError(() => of([]))
     )

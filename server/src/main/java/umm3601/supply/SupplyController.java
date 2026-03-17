@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import org.bson.conversions.Bson;
-import org.bson.types.ObjectId;
 import org.bson.Document;
 import org.bson.UuidRepresentation;
+import org.bson.conversions.Bson;
+import org.bson.types.ObjectId;
 import org.mongojack.JacksonMongoCollection;
 
 import com.mongodb.client.MongoDatabase;
@@ -22,19 +22,25 @@ import io.javalin.http.BadRequestResponse;
 import io.javalin.http.Context;
 import io.javalin.http.HttpStatus;
 import io.javalin.http.NotFoundResponse;
-
 import umm3601.Controller;
 
-/* FamilyController Contains the Following:
-- getSupplies()
-- getSupply() /By ID/
-*/
-
-/* Notes:
-I'd like to add more functions to add and such,
-but its not our focus at the moment
-*/
-
+/**
+ * Controller for Supply API routes.
+ *
+ * Supply represents the *official supply list configuration* for each
+ * school/grade/year combination. It is not tied to inventory or family
+ * requests in Iteration 1.
+ *
+ * This controller intentionally supports only:
+ *  - GET /api/supplies         → list all supply items (with filters)
+ *  - GET /api/supplies/{id}    → get a single supply item
+ *
+ * Future teams may add:
+ *  - POST/PUT/DELETE for admin editing
+ *  - validation against Inventory
+ *  - bulk upload tools
+ *  - year-to-year rollovers
+ */
 public class SupplyController implements Controller {
   private static final String API_SUPPLIES = "/api/supplies";
   private static final String API_SUPPLY_BY_ID = "/api/supplies/{id}";
@@ -54,8 +60,15 @@ public class SupplyController implements Controller {
       UuidRepresentation.STANDARD);
   }
 
-  // GET all supplies with itemKey, school, grade, and year filters
-  // /api/supplies?school=X&grade=Y&year=Z
+  /**
+   * GET /api/supplies
+   *
+   * Returns all supplies matching optional filters:
+   *  - school
+   *  - grade
+   *  - year
+   *  - itemName (case-insensitive substring match)
+   */
   public void getSupplies(Context ctx) {
     Bson combinedFilter = constructFilter(ctx);
 
@@ -68,7 +81,14 @@ public class SupplyController implements Controller {
     ctx.status(HttpStatus.OK);
   }
 
-  // GET supply by ID
+  /**
+   * GET /api/supplies/{id}
+   * Retrieves a single supply item by MongoDB ObjectId.
+   *
+   * Includes error handling for:
+   *  - invalid ObjectId format
+   *  - non-existent supply item
+   */
   public void getSupply(Context ctx) {
     String id = ctx.pathParam("id");
     Supply supply;
@@ -88,6 +108,15 @@ public class SupplyController implements Controller {
     }
   }
 
+  /**
+   * Builds a MongoDB filter based on query parameters.
+   *
+   * Supports:
+   *  - exact matches for school, grade, year
+   *  - case-insensitive regex match for itemName
+   *
+   * If no filters are provided, returns all supplies.
+   */
   private Bson constructFilter(Context ctx) {
     List<Bson> filters = new ArrayList<>();
 
@@ -107,10 +136,17 @@ public class SupplyController implements Controller {
       filters.add(eq(YEAR_KEY, ctx.queryParam(YEAR_KEY)));
     }
 
+    // If no filters were added, return all documents
     Bson combinedFilter = filters.isEmpty() ? new Document() : and(filters);
     return combinedFilter;
   }
 
+  /**
+   * Registers Supply API routes.
+   *
+   * Note: Only GET routes exist in Iteration 1.
+   * This keeps Supply read‑only until future teams expand functionality.
+   */
   @Override
   public void addRoutes(Javalin server) {
     server.get(API_SUPPLY_BY_ID, this::getSupply);

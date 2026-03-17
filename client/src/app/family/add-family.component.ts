@@ -130,12 +130,12 @@ export class AddFamilyComponent {
       students: rawForm.students?.map(student => ({
         ...student,
         requestedSupplies:
-        typeof student.requestedSupplies === 'string'
-          ? student.requestedSupplies
-            .split(',')
-            .map(s => s.trim())
-            .filter(s => s.length > 0)
-          : student.requestedSupplies ?? []
+          typeof student.requestedSupplies === 'string'
+            ? student.requestedSupplies
+              .split(',')
+              .map(s => s.trim())
+              .filter(s => s.length > 0)
+            : student.requestedSupplies ?? []
       })) ?? []
     };
 

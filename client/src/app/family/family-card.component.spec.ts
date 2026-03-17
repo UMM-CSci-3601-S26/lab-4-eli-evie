@@ -20,7 +20,7 @@ describe('FamilyCardComponent', () => {
     fixture = TestBed.createComponent(FamilyCardComponent);
     component = fixture.componentInstance;
     expectedFamily = {
-    //family with 2 kids
+      // Example Family with Two Kids
       _id: 'chris_id',
       guardianName: 'Chris',
       address: '123 Street',
@@ -41,6 +41,7 @@ describe('FamilyCardComponent', () => {
         }
       ]
     };
+
     fixture.componentRef.setInput('family', expectedFamily);
     fixture.detectChanges();
   });

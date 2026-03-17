@@ -15,7 +15,7 @@ export interface Family {
 }
 
 export interface DashboardStats {
-  studentsPerSchool: { [school: string]: number};
-  studentsPerGrade: { [grade: string]: number};
+  studentsPerSchool: { [school: string]: number };
+  studentsPerGrade: { [grade: string]: number };
   totalFamilies: number;
 }

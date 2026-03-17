@@ -1,8 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
-//import { Observable } from 'rxjs';
 import { MockFamilyService } from 'src/testing/family.service.mock';
-//import { Family } from './family';
 import { FamilyListComponent } from './family-list.component';
 import { FamilyService } from './family.service';
 import { provideHttpClient } from '@angular/common/http';
@@ -67,14 +65,6 @@ describe('Family list', () => {
   });
 });
 
-
-
-// /*
-//  * This test is a little odd, but illustrates how we can use stubs
-//  * to create mock objects (a service in this case) that be used for
-//  * testing. Here we set up the mock FamilyService (familyServiceStub) so that
-//  * _always_ fails (throws an exception) when you request a set of families.
-//  */
 describe('Misbehaving Family List', () => {
   let familyList: FamilyListComponent;
   let fixture: ComponentFixture<FamilyListComponent>;

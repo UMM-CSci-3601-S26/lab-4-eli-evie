@@ -1,4 +1,3 @@
-//import { Family } from 'src/app/family/family';
 import { AddFamilyPage } from '../support/add-family.po';
 
 describe('Add family', () => {
