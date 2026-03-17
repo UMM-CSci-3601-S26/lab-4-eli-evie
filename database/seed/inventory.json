@@ -2,196 +2,265 @@
   {
     "itemKey": "backpack",
     "itemName": "Backpack",
+    "description": "[\"any\"]",
     "quantityAvailable": 2
   },
   {
     "itemKey": "binder",
     "itemName": "Binder",
+    "description": "[\"3-ring\", \"1 inch\"]",
     "quantityAvailable": 6
   },
   {
     "itemKey": "blanket",
     "itemName": "Blanket",
+    "description": "[\"any\"]",
     "quantityAvailable": 1
   },
   {
     "itemKey": "colored_pencils",
     "itemName": "Colored Pencils",
+    "description": "[\"24 count or 36 count\", \"Crayola\"]", 
+    "quantityAvailable": 3
+  },
+  {
+    "itemKey": "colored_pencils",
+    "itemName": "Colored Pencils",
+    "description": "[\"any\"]", 
     "quantityAvailable": 3
   },
   {
     "itemKey": "composition_notebook",
-    "itemName": "Composition Notebook",
+    "itemName": "Notebook",
+    "description": "[\"composition\"], [\"wide-ruled\"]",
     "quantityAvailable": 2
   },
   {
     "itemKey": "crayons",
     "itemName": "Crayons",
+    "description": "[\"Crayola\"]",
     "quantityAvailable": 9
   },
   {
     "itemKey": "disinfecting_wipes",
     "itemName": "Disinfecting Wipes",
+    "description": "[\"any\"]",
     "quantityAvailable": 3
   },
   {
     "itemKey": "dry_erase_marker",
     "itemName": "Dry Erase Marker",
+    "description": "[\"black\", \"expo\", \"fine tipped\",]",
     "quantityAvailable": 16
   },
   {
     "itemKey": "eraser",
     "itemName": "Eraser",
+    "description":"\"any\"", 
     "quantityAvailable": 2
   },
   {
-    "itemKey": "folder_blue",
-    "itemName": "Blue Folder",
+    "itemKey": "folder_paper",
+    "itemName": "Folder",
+    "description":"[\"blue\", \"paper\"]", 
     "quantityAvailable": 4
   },
   {
     "itemKey": "folder_green",
-    "itemName": "Green Folder",
+    "itemName": "Folder",
+    "description":"[\"green\"]", 
     "quantityAvailable": 2
   },
   {
-    "itemKey": "folder_red",
-    "itemName": "Red Folder",
+    "itemKey": "folder_plastic",
+    "itemName": "Folder",
+    "description":"[\"red\", \"plastic\"]", 
     "quantityAvailable": 4
   },
   {
-    "itemKey": "folder_yellow",
-    "itemName": "Yellow Folder",
+    "itemKey": "folder",
+    "itemName": "Folder",
+    "description":"[\"yellow\"]", 
     "quantityAvailable": 2
   },
   {
-    "itemKey": "folder_purple",
-    "itemName": "Purple Folder",
+    "itemKey": "folder",
+    "itemName": "Folder",
+    "description":"[\"purple\"]", 
     "quantityAvailable": 1
   },
   {
     "itemKey": "glue_bottle",
     "itemName": "Glue Bottle",
+    "description": "[\"Elmer's\", \"white\", \"4 ounce\"]", 
     "quantityAvailable": 1
   },
   {
     "itemKey": "glue_stick",
     "itemName": "Glue Stick",
+    "description":"", 
     "quantityAvailable": 29
   },
   {
     "itemKey": "hand_sanitizer",
     "itemName": "Hand Sanitizer",
+    "description":"", 
     "quantityAvailable": 1
   },
   {
     "itemKey": "headphones",
     "itemName": "Headphones",
+    "description":"[\"earbuds\"]", 
     "quantityAvailable": 4
   },
   {
     "itemKey": "highlighter",
     "itemName": "Highlighter",
+    "description":"[\"yellow\"]", 
+    "quantityAvailable": 3
+  },
+  {
+    "itemKey": "highlighter",
+    "itemName": "Highlighter",
+    "description":"[\"orange\"]", 
     "quantityAvailable": 3
   },
   {
     "itemKey": "index_cards",
     "itemName": "Index Cards",
+    "description":"[\"3x5\", \"100 count\"]", 
     "quantityAvailable": 1
   },
   {
     "itemKey": "loose_leaf_paper",
     "itemName": "Loose Leaf Paper",
+    "description":"[\"wide-ruled\"]", 
     "quantityAvailable": 2
+  },
+  {
+    "itemKey": "loose_leaf_paper",
+    "itemName": "Loose Leaf Paper",
+    "description":"[\"college-ruled\"]", 
+    "quantityAvailable": 15
   },
   {
     "itemKey": "markers",
     "itemName": "Markers",
+    "description":"[\"Crayola\", \"washable\", \"broad line\"]", 
     "quantityAvailable": 5
   },
   {
-    "itemKey": "notebook",
-    "itemName": "Spiral Notebook",
+    "itemKey": "spiral_notebook",
+    "itemName": "Notebook",
+    "description":"[\"spiral\", \"college-ruled\", \"yellow\"]", 
+    "quantityAvailable": 11
+  },
+  {
+    "itemKey": "spiral_notebook",
+    "itemName": "Notebook",
+    "description": "[\"spiral\", \"wide-ruled\"]", 
+    "quantityAvailable": 11
+  },
+  {
+    "itemKey": "composition_notebook",
+    "itemName": "Notebook",
+    "description":"[\"wide ruled\", \"composition\"]", 
     "quantityAvailable": 11
   },
   {
     "itemKey": "page_protectors",
     "itemName": "Page Protectors",
+    "description":"[\"any\"]", 
     "quantityAvailable": 100
   },
   {
     "itemKey": "pencil_box",
     "itemName": "Pencil Box",
+    "description":"[\"any\"]", 
     "quantityAvailable": 1
   },
   {
     "itemKey": "pencil_pouch",
     "itemName": "Pencil Pouch",
+    "description":"[\"any\"]", 
     "quantityAvailable": 1
   },
   {
     "itemKey": "pencils",
     "itemName": "Pencils",
+    "description":"[\"#2\", \"sharpened\", \"yellow\", \"Ticonderoga\", \"not mechanical\"]", 
     "quantityAvailable": 61
   },
   {
     "itemKey": "pens",
     "itemName": "Pens",
+    "description":"[\"any\"]", 
     "quantityAvailable": 1
   },
   {
     "itemKey": "pens_black",
-    "itemName": "Black Pens",
+    "itemName": "Pens",
+    "description":"[\"black\"]", 
     "quantityAvailable": 1
   },
   {
     "itemKey": "pens_blue",
-    "itemName": "Blue Pens",
+    "itemName": "Pens",
+    "description":"[\"blue\"]", 
     "quantityAvailable": 1
   },
   {
     "itemKey": "pens_red",
-    "itemName": "Red Pens",
+    "itemName": "Pens",
+    "description":"[\"red\"]", 
     "quantityAvailable": 1
   },
   {
     "itemKey": "ruler",
     "itemName": "Ruler",
+    "description":"[\"any\"]", 
     "quantityAvailable": 1
   },
   {
     "itemKey": "scissors",
     "itemName": "Scissors",
+    "description":"[\"Fiskars\", \"student\"]", 
     "quantityAvailable": 5
   },
   {
     "itemKey": "sharpie",
     "itemName": "Sharpie",
+    "description": "[\"black\", \"Sharpie\", \"permanent\", \"marker\"]", 
     "quantityAvailable": 2
   },
   {
     "itemKey": "snacks",
     "itemName": "Snacks",
+    "description":"[\"any\"]", 
     "quantityAvailable": 2
   },
   {
     "itemKey": "tennis_shoes",
     "itemName": "Tennis Shoes",
+    "description":"[\"close-toed\"]", 
     "quantityAvailable": 1
   },
   {
     "itemKey": "tissues",
     "itemName": "Tissues",
+    "description":"[\"any\"]", 
     "quantityAvailable": 6
   },
   {
     "itemKey": "water_bottle",
     "itemName": "Water Bottle",
+    "description":"[\"any\"]", 
     "quantityAvailable": 1
   },
   {
     "itemKey": "watercolor_paints",
     "itemName": "Watercolor Paints",
+    "description":"[\"washable\", \"8 color\", \"Crayola\"]", 
     "quantityAvailable": 4
   }
 ]
