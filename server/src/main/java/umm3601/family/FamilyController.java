@@ -23,31 +23,35 @@ import static com.mongodb.client.model.Filters.eq;
 
 import umm3601.Controller;
 
-/* FamilyController Contains the Following:
-- getFamilies()
-- getFamily() /By ID/
-- addNewFamily()
-- deleteFamily() /By ID/
-- getDashboardStats() /Has its own API/
-- exportFamiliesAsCSV()
-*/
-
-/* Notes:
-I'd like to make more checks for adding a family.
-Just dont know how to make it work the way I wish.
-*/
+/**
+ * Controller for handling Family-related API routes.
+ *
+ * Routes include:
+ *  - GET /api/family              → list all families
+ *  - GET /api/family/{id}         → get a single family
+ *  - POST /api/family             → add a new family
+ *  - DELETE /api/family/{id}      → delete a family
+ *  - GET /api/dashboard           → aggregated student statistics
+ *  - GET /api/family/export       → export families as CSV
+ *
+ * Families are the core registration unit, and dashboard stats
+ * rely on embedded student data.
+ */
 
 public class FamilyController implements Controller {
+
   private static final String API_FAMILY = "/api/family";
   private static final String API_DASHBOARD = "/api/dashboard";
   private static final String API_FAMILY_BY_ID = "/api/family/{id}";
   private static final String API_FAMILY_EXPORT = "/api/family/export";
 
+  // Basic email validation regex
   public static final String EMAIL_REGEX = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";
 
   private final JacksonMongoCollection<Family> familyCollection;
 
   public FamilyController(MongoDatabase database) {
+    // Connects to the "family" collection using Jackson for serialization
     familyCollection = JacksonMongoCollection.builder().build(
         database,
         "family",
@@ -55,7 +59,8 @@ public class FamilyController implements Controller {
         UuidRepresentation.STANDARD);
   }
 
-  // GET all families
+  // GET /api/family
+  // Returns all registered families.
   public void getFamilies(Context ctx) {
     ArrayList<Family> matchingFamilies = familyCollection
       .find()
@@ -65,7 +70,14 @@ public class FamilyController implements Controller {
     ctx.status(HttpStatus.OK);
   }
 
-  // GET family by ID
+  /**
+   * GET /api/family/{id}
+   * Retrieves a single family by MongoDB ObjectId.
+   *
+   * Includes error handling for:
+   *  - invalid ObjectId format
+   *  - non-existent family
+   */
   public void getFamily(Context ctx) {
     String id = ctx.pathParam("id");
     Family family;
@@ -83,14 +95,25 @@ public class FamilyController implements Controller {
     }
   }
 
-  // POST new family
+  /**
+   * POST /api/family
+   * Adds a new family registration.
+   *
+   * Uses Javalin's bodyValidator to enforce:
+   *  - valid email format
+   *
+   * Future improvements (Iteration 2):
+   *  - Validate that students list is not empty
+   *  - Validate that grade/school fields are present
+   *  - Validate requestedSupplies against Supply collection
+   */
   public void addNewFamily(Context ctx) {
     String body = ctx.body();
+
     Family newFamily = ctx.bodyValidator(Family.class)
       .check(fam -> fam.email.matches(EMAIL_REGEX),
         "Family must have a valid email; body was " + body)
-      // .check(fam -> fam.students,
-      //   "Family must have a legal family role; body was " + body)
+      // Additional validation can be added here
       .get();
 
     familyCollection.insertOne(newFamily);
@@ -99,7 +122,14 @@ public class FamilyController implements Controller {
     ctx.status(HttpStatus.CREATED);
   }
 
-  // DELETE family
+  /**
+   * DELETE /api/family/{id}
+   * Removes a family registration.
+   *
+   * Returns 404 if:
+   *  - the ID is invalid
+   *  - no family with that ID exists
+   */
   public void deleteFamily(Context ctx) {
     String id = ctx.pathParam("id");
     DeleteResult deleteResult = familyCollection.deleteOne(eq("_id", new ObjectId(id)));
@@ -114,6 +144,21 @@ public class FamilyController implements Controller {
     ctx.status(HttpStatus.OK);
   }
 
+  /**
+   * GET /api/dashboard
+   * Computes summary statistics for:
+   *  - students per school
+   *  - students per grade
+   *  - total families
+   *
+   * Because students are embedded inside families,
+   * this requires only one database query.
+   *
+   * Future improvements (Iteration 2):
+   *  - total students
+   *  - filterable for per district, grade, and school.
+   */
+
   public void getDashboardStats(Context ctx) {
     ArrayList<Family> families = familyCollection
       .find()
@@ -124,10 +169,10 @@ public class FamilyController implements Controller {
 
     for (Family family : families) {
       for (Family.StudentInfo student : family.students) {
-        //count per school
+        // Count per school
         studentsPerSchool.merge(student.school, 1, Integer::sum);
 
-        //count per grade
+        // Count per grade
         studentsPerGrade.merge(student.grade, 1, Integer::sum);
       }
     }
@@ -139,16 +184,24 @@ public class FamilyController implements Controller {
     ctx.json(result);
   }
 
+  /**
+   * GET /api/family/export
+   * Exports a simple CSV of family-level data.
+   *
+   * Note: This does NOT export student-level details.
+   * Future teams may expand this to include:
+   *  - requested supplies
+   *  - filtering options
+   */
   public void exportFamiliesAsCSV(Context ctx) {
     List<Family> families = familyCollection.find().into(new ArrayList<>());
 
     StringBuilder csv = new StringBuilder();
 
-    // Header
+    // CSV header row
     csv.append("Guardian Name,Email,Address,Time Slot,Number of Students\n");
 
     for (Family family : families) {
-
       int studentCount = family.students != null ? family.students.size() : 0;
 
       csv.append(String.format("\"%s\",\"%s\",\"%s\",\"%s\",%d\n",
@@ -166,16 +219,23 @@ public class FamilyController implements Controller {
     ctx.result(csv.toString());
   }
 
+  /**
+   * Registers all API routes for this controller.
+   *
+   * Note: Specific routes (like /export and /dashboard)
+   * are placed BEFORE the {id} routes to avoid conflicts
+   * which our team experienced.
+   */
   @Override
   public void addRoutes(Javalin server) {
     server.get(API_FAMILY, this::getFamilies);
     server.post(API_FAMILY, this::addNewFamily);
 
-    // Put specific routes FIRST
+    // Specific routes FIRST
     server.get(API_FAMILY_EXPORT, this::exportFamiliesAsCSV);
     server.get(API_DASHBOARD, this::getDashboardStats);
 
-    // Put {id} routes LAST
+    // ID-based routes LAST
     server.get(API_FAMILY_BY_ID, this::getFamily);
     server.delete(API_FAMILY_BY_ID, this::deleteFamily);
   }
