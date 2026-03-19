@@ -96,16 +96,19 @@ public class InventoryControllerSpec {
       new Document()
         .append("itemKey", "backpack")
         .append("itemName", "Backpack")
+        .append("description", "any")
         .append("quantityAvailable", 5));
     testInventory.add(
       new Document()
         .append("itemKey", "colored_pencils")
         .append("itemName", "Colored Pencils")
+        .append("description", "colors of the rainbow")
         .append("quantityAvailable", 3));
     testInventory.add(
       new Document()
         .append("itemKey", "composition_notebook")
         .append("itemName", "Composition Notebook")
+        .append("description", "composition")
         .append("quantityAvailable", 2));
 
     crayonsID = new ObjectId();
@@ -113,6 +116,7 @@ public class InventoryControllerSpec {
       .append("_id", crayonsID)
       .append("itemKey", "crayons")
       .append("itemName", "Crayons")
+      .append("description", "any")
       .append("quantityAvailable", 9);
 
     inventoryDocuments.insertMany(testInventory);
@@ -134,7 +138,7 @@ public class InventoryControllerSpec {
   }
 
   @Test
-  void canGetAllIventory() throws IOException {
+  void canGetAllInventory() throws IOException {
     when(ctx.queryParamMap()).thenReturn(Collections.emptyMap());
     inventoryController.getAllInventory(ctx);
     verify(ctx).json(inventoryArrayListCaptor.capture());
@@ -233,7 +237,7 @@ public class InventoryControllerSpec {
   }
 
   @Test
-  void addInvalidItenKeyToInventory() throws IOException {
+  void addInvalidItemKeyToInventory() throws IOException {
     String newInventoryJson = """
       {
         "itemKey": "Composition Notebook",

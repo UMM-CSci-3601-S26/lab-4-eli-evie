@@ -5,7 +5,7 @@
 .inventory-header,
 .inventory-row {
   display: grid;
-  grid-template-columns: 2fr 2fr 2fr 1fr;
+  grid-template-columns: 2fr 2fr 2fr 2fr 1fr;
   align-items: center;
 
   padding: 10px 12px;
@@ -25,7 +25,8 @@
 }
 
 .item-name,
-.item-key {
+.item-key,
+.description {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

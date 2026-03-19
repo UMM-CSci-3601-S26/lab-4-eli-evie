@@ -92,6 +92,24 @@ describe('AddInventoryComponent', () => {
 
   });
 
+  describe('The description field', () => {
+    let descriptionControl: AbstractControl;
+
+    beforeEach(() => {
+      descriptionControl = addInventoryComponent.addInventoryForm.controls.description;
+    });
+
+    it('should allow empty descriptions', () => {
+      descriptionControl.setValue('');
+      expect(descriptionControl.valid).toBeTruthy();
+    });
+
+    it('should be fine with "red"', () => {
+      descriptionControl.setValue('red');
+      expect(descriptionControl.valid).toBeTruthy();
+    });
+  });
+
   describe('The quantityAvailable field', () => {
     let quantityAvailableControl: AbstractControl;
 
@@ -109,7 +127,7 @@ describe('AddInventoryComponent', () => {
       expect(quantityAvailableControl.valid).toBeTruthy();
     });
 
-    it('shouldnt allow only strings to input', () => {
+    it('should not allow only strings to input', () => {
       quantityAvailableControl.setValue('x');
       expect(quantityAvailableControl.valid).toBeFalsy();
       expect(quantityAvailableControl.hasError('pattern')).toBeTruthy();
@@ -177,9 +195,6 @@ describe('AddInventoryComponent#submitForm()', () => {
         provideHttpClient(),
         provideHttpClientTesting(),
         {provide: InventoryService, useClass: MockInventoryService }, // A (more-async-tests) - provide + use class of the mock
-        // provideRouter([
-        //   { path: 'inventory/:id', component: InventoryListComponent }
-        // ])
       ]
     }).compileComponents().catch(error => {
       expect(error).toBeNull();
@@ -199,17 +214,9 @@ describe('AddInventoryComponent#submitForm()', () => {
   beforeEach(() => {
     component.addInventoryForm.controls.itemKey.setValue('red_folder');
     component.addInventoryForm.controls.itemName.setValue('Folder');
+    component.addInventoryForm.controls.description.setValue('red');
     component.addInventoryForm.controls.quantityAvailable.setValue(6);
   });
-
-  // it('should call addInventory() and handle success response', fakeAsync(() => {
-  //   const addInventorySpy = spyOn(inventoryService, 'addInventory').and.returnValue(of('1'));
-  //   component.submitForm();
-  //   expect(addInventorySpy).toHaveBeenCalledWith(component.addInventoryForm.value);
-  //   tick();
-  //   expect(location.path()).toBe('/inventory/1');
-  //   flush();
-  // }));
 
   it('should call addInventory() and handle error response', () => {
     const path = location.path();

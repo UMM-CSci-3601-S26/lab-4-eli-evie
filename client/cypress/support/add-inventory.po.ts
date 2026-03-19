@@ -9,6 +9,7 @@ export class AddInventoryPage {
 
   private readonly itemKeySelector = '[data-test=itemKeyInput]';
   private readonly itemNameSelector = '[data-test=itemNameInput]';
+  private readonly descriptionSelector = '[data-test=descriptionInput]';
   private readonly quantitySelector = '[data-test=quantityInput]';
 
   navigateTo() {
@@ -30,6 +31,9 @@ export class AddInventoryPage {
   fillItemName(value: string) {
     return cy.get(this.itemNameSelector).clear().type(value);
   }
+  fillDescription(value: string) {
+    return cy.get(this.descriptionSelector).clear().type(value);
+  }
 
   fillQuantity(value: number) {
     return cy.get(this.quantitySelector).clear().type(value.toString());
@@ -42,6 +46,7 @@ export class AddInventoryPage {
   addInventory(item: InventoryItem) {
     this.fillItemKey(item.itemKey);
     this.fillItemName(item.itemName);
+    this.fillDescription(item.description)
     this.fillQuantity(item.quantityAvailable);
     return this.submit();
   }
