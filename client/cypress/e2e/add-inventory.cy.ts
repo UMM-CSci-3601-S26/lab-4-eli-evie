@@ -19,21 +19,22 @@ describe('Add Inventory Page', () => {
     addPage.getSubmitButton().should('be.disabled');
   });
 
-  //   it('Should add a new inventory item', () => {
-  //     const newItem = {
-  //       itemKey: 'glue',
-  //       itemName: 'Glue Sticks',
-  //       quantityAvailable: 5
-  //     }
+  it('Should add a new inventory item', () => {
+    const newItem = {
+      itemKey: 'glue',
+      itemName: 'Glue Sticks',
+      description: "[\"any\"]",
+      quantityAvailable: 5
+    }
 
-  //     addPage.navigateTo();
-  //     addPage.addInventory(newItem);
+    addPage.navigateTo();
+    addPage.addInventory(newItem);
 
-  //     cy.url().should('include', '/inventory');
+    cy.url().should('include', '/inventory');
 
-  //     cy.contains('[data-test=inventoryRow]', 'Glue Sticks')
-  //       .should('exist');
-  //   });
+    cy.contains('[data-test=inventoryRow]', 'Glue Sticks')
+      .should('exist');
+  });
 
   it('Should show error if quantity is negative', () => {
     addPage.navigateTo();

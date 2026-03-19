@@ -6,9 +6,10 @@ import org.mongojack.ObjectId;
 /**
  * The Inventory model represents the *physical stock* available for each supply item.
  *
- * Iteration 1 intentionally keeps this model extremely simple:
+ * Lab 4 continues to keep this model extremely simple:
  *  - Only one stable identifier (itemKey)
  *  - A human-readable name (itemName)
+ *  - An optional description field (description)
  *  - A single mutable field (quantityAvailable)
  *
  * This minimal structure makes Inventory easy to evolve in future iterations.
@@ -38,6 +39,9 @@ public class Inventory {
 
   // Human-readable name for display purposes.
   public String itemName;
+
+  //An optional description
+  public String description;
 
   public int quantityAvailable;
 }

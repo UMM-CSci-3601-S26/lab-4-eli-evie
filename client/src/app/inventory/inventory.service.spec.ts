@@ -12,18 +12,21 @@ describe('InventoryService', () => {
       _id: 'backpack_id',
       itemKey: 'backpack',
       itemName: 'Backpack',
+      description: "[\"any\"]",
       quantityAvailable: 5
     },
     {
       _id: 'colored_pencils_id',
       itemKey: 'colored_pencils',
       itemName: 'Colored Pencils',
+      description: "[\"any\"]",
       quantityAvailable: 3
     },
     {
       _id: 'crayons_id',
       itemKey: 'crayons',
       itemName: 'Crayons',
+      description: "[\"Crayola\"]",
       quantityAvailable: 6
     }
   ];

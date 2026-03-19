@@ -24,6 +24,7 @@ export class AddInventoryComponent {
   addInventoryForm = new FormGroup({
     itemKey: new FormControl('', Validators.required),
     itemName: new FormControl('', Validators.required),
+    description: new FormControl(''),
     quantityAvailable: new FormControl<number>(null, Validators.compose([
       Validators.required,
       Validators.min(0),
@@ -69,7 +70,7 @@ export class AddInventoryComponent {
           null,
           { duration: 2000 }
         );
-        this.router.navigate(['/inventorys/', newId]);
+        this.router.navigate(['/inventory/', newId]); // was '/inventorys/'
       },
       error: err => {
         if (err.status === 400) {

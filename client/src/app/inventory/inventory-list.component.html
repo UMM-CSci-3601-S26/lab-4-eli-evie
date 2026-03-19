@@ -12,6 +12,7 @@
         <div class="inventory-header">
           <span>Name</span>
           <span>Key</span>
+          <span>Description</span>
           <span>Quantity</span>
           <span>Actions</span>
         </div>
@@ -23,6 +24,8 @@
             <span class="item-name">{{ item.itemName }}</span>
 
             <span class="item-key">{{ item.itemKey }}</span>
+
+            <span class="description">{{ item.description }}</span>
 
             <div class="quantity-controls">
               <button mat-icon-button
