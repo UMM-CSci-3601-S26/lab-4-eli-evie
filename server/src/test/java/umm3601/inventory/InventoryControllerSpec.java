@@ -102,14 +102,28 @@ public class InventoryControllerSpec {
       new Document()
         .append("itemKey", "colored_pencils")
         .append("itemName", "Colored Pencils")
-        .append("description", "colors of the rainbow")
+        .append("description", "blue")
         .append("quantityAvailable", 3));
     testInventory.add(
       new Document()
         .append("itemKey", "composition_notebook")
-        .append("itemName", "Composition Notebook")
+        .append("itemName", "Notebook")
         .append("description", "composition")
         .append("quantityAvailable", 2));
+    testInventory.add(
+      new Document()
+        .append("itemKey", "folder")
+        .append("itemName", "Folder")
+        .append("description", "red")
+        .append("quantityAvailable", 7));
+        testInventory.add(
+      new Document()
+        .append("itemKey", "folder")
+        .append("itemName", "Folder")
+        .append("description", "blue")
+        .append("quantityAvailable", 6));
+
+
 
     crayonsID = new ObjectId();
     Document crayonsDoc = new Document()
@@ -184,6 +198,52 @@ public class InventoryControllerSpec {
 
     assertEquals("The requested inventory was not found", exception.getMessage());
   }
+//_______________________________________________________________________
+//Based following off code from HarleyBlakeThatcherandGabe It1
+
+  void canFilterInventoryByItemInsensitive() {
+    when(ctx.queryParamMap()).thenReturn(Map.of("itemKey", List.of("FoLDEr")));
+    when(ctx.queryParam("item")).thenReturn("FoLDEr");
+
+    inventoryController.getAllInventory(ctx);
+
+    verify(ctx).json(inventoryArrayListCaptor.capture());
+    verify(ctx).status(HttpStatus.OK);
+
+    assertEquals(2, inventoryArrayListCaptor.getValue().size());
+    assertEquals("Folder", inventoryArrayListCaptor.getValue().get(0).itemKey);
+  }
+
+  @Test
+  void canFilterInventoryByItemNameInsensitive() {
+    when(ctx.queryParamMap()).thenReturn(Map.of("itemName", List.of("NotEbOok")));
+    when(ctx.queryParam("itemName")).thenReturn("NotEbOok");
+
+    inventoryController.getAllInventory(ctx);
+
+    verify(ctx).json(inventoryArrayListCaptor.capture());
+    verify(ctx).status(HttpStatus.OK);
+
+    assertEquals(1, inventoryArrayListCaptor.getValue().size());
+    assertEquals("Notebook", inventoryArrayListCaptor.getValue().get(0).itemName);
+  }
+
+  @Test
+  void canFilterInventoryByItemDescriptionInsensitive() {
+    when(ctx.queryParamMap()).thenReturn(Map.of("description", List.of("bLuE")));
+    when(ctx.queryParam("description")).thenReturn("bLuE");
+
+    inventoryController.getAllInventory(ctx);
+
+    verify(ctx).json(inventoryArrayListCaptor.capture());
+    verify(ctx).status(HttpStatus.OK);
+
+    assertEquals(2, inventoryArrayListCaptor.getValue().size());
+    assertEquals("blue", inventoryArrayListCaptor.getValue().get(0).description);
+  }
+
+//___________________________________________________________________________________________
+
 
   @Test
   void addInventory() throws IOException {
