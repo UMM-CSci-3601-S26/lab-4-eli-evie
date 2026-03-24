@@ -1,4 +1,4 @@
-import { HttpClient, provideHttpClient } from '@angular/common/http'; //HttpParams
+import { HttpClient, provideHttpClient, HttpParams } from '@angular/common/http'; //HttpParams
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { TestBed, waitForAsync } from '@angular/core/testing';
 import { of } from 'rxjs';
@@ -23,10 +23,10 @@ describe('InventoryService', () => {
       quantityAvailable: 3
     },
     {
-      _id: 'crayons_id',
-      itemKey: 'crayons',
-      itemName: 'Crayons',
-      description: "[\"Crayola\"]",
+      _id: 'folder_id',
+      itemKey: 'folder_plastic',
+      itemName: 'Folder',
+      description: "[\"plastic\"]",
       quantityAvailable: 6
     }
   ];
@@ -60,12 +60,112 @@ describe('InventoryService', () => {
           .toHaveBeenCalledTimes(1);
         expect(mockedMethod)
           .withContext('talks to the correct endpoint')
-          .toHaveBeenCalledWith(inventoryService.inventoryUrl);
+          .toHaveBeenCalledWith(inventoryService.inventoryUrl, { params: new HttpParams() });
       });
     }));
   });
 
+  //___________________________________________________________________________________________________
 
+  describe('When getInventory() is called with parameters, it correctly forms the HTTP request (Javalin/Server filtering)', () => {
+
+    it('correctly calls api/inventory with filter parameter \'itemKey\'', () => {
+      const mockedMethod = spyOn(httpClient, 'get').and.returnValue(of(testInventory));
+
+      inventoryService.getInventory({ itemKey: 'Backpack' }).subscribe(() => {
+        expect(mockedMethod)
+          .withContext('one call')
+          .toHaveBeenCalledTimes(1);
+        expect(mockedMethod)
+          .withContext('talks to the correct endpoint')
+          .toHaveBeenCalledWith(inventoryService.inventoryUrl, { params: new HttpParams().set('itemKey', 'Backpack') });
+      });
+    });
+
+    it('correctly calls api/inventory with filter parameter \'itemName\'', () => {
+      const mockedMethod = spyOn(httpClient, 'get').and.returnValue(of(testInventory));
+
+      inventoryService.getInventory({ itemName: 'Colored Pencils' }).subscribe(() => {
+        expect(mockedMethod)
+          .withContext('one call')
+          .toHaveBeenCalledTimes(1);
+        expect(mockedMethod)
+          .withContext('talks to the correct endpoint')
+          .toHaveBeenCalledWith(inventoryService.inventoryUrl, { params: new HttpParams().set('itemName', 'Colored Pencils') });
+      });
+    });
+
+    it('correctly calls api/inventory with filter parameter \'description\'', () => {
+      const mockedMethod = spyOn(httpClient, 'get').and.returnValue(of(testInventory));
+
+      inventoryService.getInventory({ description: 'any' }).subscribe(() => {
+        expect(mockedMethod)
+          .withContext('one call')
+          .toHaveBeenCalledTimes(1);
+        expect(mockedMethod)
+          .withContext('talks to the correct endpoint')
+          .toHaveBeenCalledWith(inventoryService.inventoryUrl, { params: new HttpParams().set('description', 'any') });
+      });
+    });
+
+
+    it('correctly calls api/inventory with multiple filter parameters (itemKey, itemName, description)', () => {
+      const mockedMethod = spyOn(httpClient, 'get').and.returnValue(of(testInventory));
+
+      inventoryService.getInventory({ itemKey: 'folder_plastic', itemName: 'Folder', description: 'plastic' }).subscribe(() => {
+
+        const [url, options] = mockedMethod.calls.argsFor(0);
+
+        const calledHttpParams: HttpParams = (options.params) as HttpParams;
+        expect(mockedMethod)
+          .withContext('one call')
+          .toHaveBeenCalledTimes(1);
+        expect(url)
+          .withContext('talks to the correct endpoint')
+          .toEqual(inventoryService.inventoryUrl);
+        expect(calledHttpParams.keys().length)
+          .withContext('should have 3 params')
+          .toEqual(3);
+        expect(calledHttpParams.get('itemKey'))
+          .withContext('item being a plastic folder')
+          .toEqual('folder_plastic');
+        expect(calledHttpParams.get('itemName'))
+          .withContext('this item is called a folder')
+          .toEqual('Folder');
+        expect(calledHttpParams.get('description'))
+          .withContext('No specified requirements')
+          .toEqual('plastic');
+      });
+    });
+
+    it('correctly calls api/inventory with multiple filter parameters (itemName, description)', () => {
+      const mockedMethod = spyOn(httpClient, 'get').and.returnValue(of(testInventory));
+
+      inventoryService.getInventory({ itemName: 'Colored Pencils', description: 'any' }).subscribe(() => {
+
+        const [url, options] = mockedMethod.calls.argsFor(0);
+
+        const calledHttpParams: HttpParams = (options.params) as HttpParams;
+        expect(mockedMethod)
+          .withContext('one call')
+          .toHaveBeenCalledTimes(1);
+        expect(url)
+          .withContext('talks to the correct endpoint')
+          .toEqual(inventoryService.inventoryUrl);
+        expect(calledHttpParams.keys().length)
+          .withContext('should have 2 params')
+          .toEqual(2);
+        expect(calledHttpParams.get('itemName'))
+          .withContext('item being colored pencils')
+          .toEqual('Colored Pencils');
+        expect(calledHttpParams.get('description'))
+          .withContext('No specified requirements')
+          .toEqual('any');
+      });
+    });
+  });
+
+  //_____________________________________________________________________________________________________
   describe('When getInventoryById() is given an ID', () => {
     it('calls api/families/id with the correct ID', waitForAsync(() => {
       const targetInventory: InventoryItem = testInventory[1];
@@ -116,5 +216,4 @@ describe('InventoryService', () => {
       });
     }));
   });
-
-});
+})
