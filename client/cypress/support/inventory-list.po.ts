@@ -36,6 +36,16 @@ export class InventoryListPage {
       .then(text => Number(text.trim()));
   }
 
+  getInventoryItemName() {
+    return cy.get('[data-cy="inventory-item"]');
+  }
+  getInventoryItemKey() {
+    return cy.get('[data-cy="inventory-brand"]');
+  }
+  getInventoryDescription() {
+    return cy.get('[data-cy="inventory-color"]');
+  }
+
   clickPlusOnFirstRow() {
     return this.getFirstRow().find(this.plusSelector).click();
   }

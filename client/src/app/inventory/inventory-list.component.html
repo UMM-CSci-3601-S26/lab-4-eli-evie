@@ -4,6 +4,51 @@
   </mat-card-header>
 
   <mat-card-content>
+    <p class="page-description">
+        Welcome to the inventory page! Here, you can view all items currently in the inventory, as well as filter them.
+    </p>
+    <hr style="margin: 1rem 0;" />
+    <p class="filters-description">
+      Use the fields below to filter the inventory by name, key, or description.
+    </p>
+    <!-- Filter Fields -->
+    <div class="filter-container">
+      <mat-form-field appearance="outline">
+        <mat-label class="filter">Name</mat-label>
+        <input
+          matInput
+          [ngModel]="itemName() ?? ''"
+          (ngModelChange)="itemName.set($event?.trim() || undefined)"
+          placeholder="contains..."
+          data-cy="filter-itemName"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label class="filter">Key</mat-label>
+        <input
+          matInput
+          [ngModel]="itemKey() ?? ''"
+          (ngModelChange)="itemKey.set($event?.trim() || undefined)"
+          placeholder="contains..."
+          data-cy="filter-itemKey"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label class="filter">Description</mat-label>
+        <input
+          matInput
+          [ngModel]="description() ?? ''"
+          (ngModelChange)="description.set($event?.trim() || undefined)"
+          placeholder="contains..."
+          data-cy="filter-description"
+        />
+      </mat-form-field>
+    </div>
+  </mat-card-content>
+
+  <mat-card-content>
 
     @if (inventoryItems()) {
 
@@ -21,11 +66,11 @@
 
           <div class="inventory-row" data-test="inventoryRow">
 
-            <span class="item-name">{{ item.itemName }}</span>
+            <span class="item-name" data-cy="inventory-itemName">{{item.itemName}}</span>
 
-            <span class="item-key">{{ item.itemKey }}</span>
+            <span class="item-key" data-cy="inventory-itemKey">{{item.itemKey}}</span>
 
-            <span class="description">{{ item.description }}</span>
+            <span class="description" data-cy="inventory-description">{{ item.description }}</span>
 
             <div class="quantity-controls">
               <button mat-icon-button

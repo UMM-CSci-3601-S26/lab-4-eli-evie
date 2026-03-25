@@ -47,3 +47,20 @@
 button[mat-icon-button] {
   background: #e0e0e0;
 }
+
+.page-description {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.filters-description {
+  font-size: 0.9rem;
+}
+
+.filter-container {
+  display: grid;
+  grid-template-columns: (1fr);
+  row-gap: 0.01rem;
+  column-gap: 1rem;
+  margin-bottom: 1rem;
+}
