@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -13,8 +13,24 @@ export class InventoryService {
   private httpClient = inject(HttpClient);
   readonly inventoryUrl = `${environment.apiUrl}inventory`;
 
-  getInventory(): Observable<InventoryItem[]> {
-    return this.httpClient.get<InventoryItem[]>(this.inventoryUrl);
+  private readonly itemKey = 'itemKey';
+  private readonly itemName = 'itemName';
+  private readonly descriptionKey = 'description';
+
+  getInventory(filters?: {itemKey?: string; itemName?: string; description?: string}): Observable<InventoryItem[]> { //: Observable<InventoryItem[]>
+    let httpParams: HttpParams = new HttpParams();
+    if (filters) {
+      if (filters.itemKey) {
+        httpParams = httpParams.set(this.itemKey, filters.itemKey);
+      }
+      if (filters.itemName) {
+        httpParams = httpParams.set(this.itemName, filters.itemName);
+      }
+      if (filters.description) {
+        httpParams = httpParams.set(this.descriptionKey, filters.description);
+      }
+    }
+    return this.httpClient.get<InventoryItem[]>(this.inventoryUrl, {params: httpParams});
   }
 
   getInventoryById(id: string): Observable<InventoryItem> {

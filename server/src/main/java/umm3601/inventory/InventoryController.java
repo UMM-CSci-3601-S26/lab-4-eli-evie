@@ -1,14 +1,21 @@
 package umm3601.inventory;
 
 import static com.mongodb.client.model.Filters.eq;
+import static com.mongodb.client.model.Filters.and;
+import static com.mongodb.client.model.Filters.regex;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
+import org.bson.Document;
 import org.bson.UuidRepresentation;
+import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
 import org.mongojack.JacksonMongoCollection;
 
+import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Sorts;
 import com.mongodb.client.result.DeleteResult;
@@ -48,6 +55,12 @@ public class InventoryController implements Controller {
   // itemKey must be lowercase and underscore-separated (e.g., "water_bottle")
   public static final String ITEMKEY_REGEX = "^[a-z_]+$";
 
+  static final String ITEM_KEY = "itemKey";
+  static final String ITEM_NAME_KEY = "itemName";
+  static final String ITEM_DESCRIPTION_KEY = "description";
+
+
+
   private final JacksonMongoCollection<Inventory> inventoryCollection;
 
   public InventoryController(MongoDatabase database) {
@@ -61,8 +74,12 @@ public class InventoryController implements Controller {
   // GET /api/inventory
   // Returns all inventory items sorted alphabetically by itemName.
   public void getAllInventory(Context ctx) {
-    ArrayList<Inventory> inventory = inventoryCollection
-      .find()
+    Bson filter = constructFilter(ctx);
+
+    FindIterable<Inventory> results = inventoryCollection.find(filter);
+
+    ArrayList<Inventory> inventory = results
+      //.find()
       .sort(Sorts.ascending("itemName"))
       .into(new ArrayList<>());
 
@@ -161,6 +178,33 @@ public class InventoryController implements Controller {
     }
     ctx.status(HttpStatus.OK);
   }
+
+//___________________________________________________________________
+
+  private Bson constructFilter(Context ctx) {
+    List<Bson> filters = new ArrayList<>();
+
+    if (ctx.queryParamMap().containsKey(ITEM_KEY)) {
+      Pattern pattern = Pattern.compile(Pattern.quote(ctx.queryParam(ITEM_KEY)), Pattern.CASE_INSENSITIVE);
+      filters.add(regex(ITEM_KEY, pattern));
+    }
+
+    if (ctx.queryParamMap().containsKey(ITEM_NAME_KEY)) {
+      Pattern pattern = Pattern.compile(Pattern.quote(ctx.queryParam(ITEM_NAME_KEY)), Pattern.CASE_INSENSITIVE);
+      filters.add(regex(ITEM_NAME_KEY, pattern));
+    }
+
+    if (ctx.queryParamMap().containsKey(ITEM_DESCRIPTION_KEY)) {
+      Pattern pattern = Pattern.compile(Pattern.quote(ctx.queryParam(ITEM_DESCRIPTION_KEY)), Pattern.CASE_INSENSITIVE);
+      filters.add(regex(ITEM_DESCRIPTION_KEY, pattern));
+    }
+
+
+
+    return filters.isEmpty() ? new Document() : and(filters);
+  }
+
+//_________________________________________________________________________________
 
   // Registers all Inventory API routes.
   @Override
